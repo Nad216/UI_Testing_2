@@ -24,6 +24,7 @@ namespace UI_Testing_2
         public DashBoard1()
         {
             InitializeComponent();
+            user_chip.Content = log1.username();
         }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
@@ -43,7 +44,8 @@ namespace UI_Testing_2
 
         private void Btn_reserCancel_Click(object sender, RoutedEventArgs e)
         {
-            //Nadun's WPF Form ADD to Here
+            CancelReserve crobj = new CancelReserve();
+            crobj.ShowDialog();
         }
 
         private void Btn_Payrec_Click(object sender, RoutedEventArgs e)

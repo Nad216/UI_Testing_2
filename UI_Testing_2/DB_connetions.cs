@@ -104,6 +104,34 @@ namespace UI_Testing_2
             return dt;
         }
 
+        public DataTable ConSelect(string table,string datatype)
+        {
+            chk = 0;
+            DataTable dt = new DataTable();
+            try
+            {
+                da = new SqlDataAdapter();
+                con.Open();
+                string a = datatype;
+                string b = table;
+                string c = a + b;
+                a = c;
+                cmd = new SqlCommand("Select "+datatype+" from "+table+"", con);
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+                con.Close();
+            }
+            catch (SqlException)
+            {
+                chk = 1;
+            }
+            catch (Exception)
+            {
+                chk = 2;
+            }
+            return dt;
+        }
+
         public int getMessage()
         {
             return chk;

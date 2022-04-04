@@ -30,7 +30,6 @@ namespace UI_Testing_2
             int chk;
             try
             {
-                
                 con.Open();
                 da = new SqlDataAdapter();
                 cmd = new SqlCommand("Select * from System_logins where User_name='" + user + "'  and User_Password='" + pass + "'", con);
@@ -240,6 +239,29 @@ namespace UI_Testing_2
             {
                 con.Open();
                 cmd = new SqlCommand("Insert into " + table + " ('" + detailtype_1 + "','" + detailtype_2 + "') values ('" + detail_1 + "','" + detail_2 + "'); ", con);
+                chk = cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (SqlException)
+            {
+                chk = 2;
+            }
+            catch (Exception)
+            {
+                chk = 3;
+            }
+
+            return chk;
+        }
+
+        public int ConUpdate(string command)
+        {
+            chk = 0;
+
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(command, con);
                 chk = cmd.ExecuteNonQuery();
                 con.Close();
             }

@@ -27,14 +27,46 @@ namespace UI_Testing_2
         public CancelReserve()
         {
             InitializeComponent();
+
             user_chip.Content = log1.username();
+            SelectionDisable(true, false, false);
+            refresh();
+            update_combos();
+        }
+
+        private void refresh()
+        {
             dt = log1.ConSelect("Reservation");
+        }
+
+        private void ClearValues()
+        {
+            cmb_selectReID.SelectedIndex = -1;
+            cmb_selectCID.SelectedIndex = -1;
+            cmb_selectRoID.SelectedIndex = -1;
+            cmb_selectRoID2.SelectedIndex = -1;
+            dtpick_rsv.Text = "";
+        }
+
+        private void update_combos()
+        {
             cmb_selectReID.ItemsSource = dt.DefaultView;
             cmb_selectReID.DisplayMemberPath = "Reser_ID";
             cmb_selectCID.ItemsSource = dt.DefaultView;
             cmb_selectCID.DisplayMemberPath = "C_ID";
+            cmb_selectCID.ItemsSource = dt.DefaultView;
+            cmb_selectCID.DisplayMemberPath = "C_ID";
         }
 
+        private void SelectionDisable(bool Op1,bool Op2, bool Op3)
+        {
+            cmb_selectReID.IsEnabled = Op1;
+            cmb_selectCID.IsEnabled = Op2;
+            cmb_selectRoID.IsEnabled = Op2;
+            cmb_selectRoID2.IsEnabled = Op3;
+            dtpick_rsv.IsEnabled = Op3;
+            ClearValues();
+        }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
         {
@@ -43,17 +75,17 @@ namespace UI_Testing_2
 
         private void Rdselect_1_Click(object sender, RoutedEventArgs e)
         {
-
+            SelectionDisable(true, false, false);
         }
 
         private void Rdselect_2_Click(object sender, RoutedEventArgs e)
         {
-
+            SelectionDisable(false, true, false);
         }
 
         private void Rdselect_3_Click(object sender, RoutedEventArgs e)
         {
-
+            SelectionDisable(false, false, true);
         }
     }
 }

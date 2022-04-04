@@ -88,7 +88,7 @@ namespace UI_Testing_2
             try { 
                 da = new SqlDataAdapter();
                 con.Open();
-                cmd = new SqlCommand("Select * from '" + table + "'", con);
+                cmd = new SqlCommand("Select * from " + table + "", con);
                 da.SelectCommand = cmd;
                 da.Fill(dt);
                 con.Close();

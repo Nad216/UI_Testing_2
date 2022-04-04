@@ -16,13 +16,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <materialDesign:DialogHost x:Name="DialogHost" >
             <materialDesign:DialogHost.DialogContent>
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -64,21 +68,64 @@
             </Button>            
         </Grid>
         <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <ComboBox Grid.Row="1" x:Name="cmb_select" materialDesign:HintAssist.Hint="(float hint)" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
-            <DataGrid Grid.Row="3" x:Name="datagrid1"/>
+            <Label Content="Select by" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+            <StackPanel HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="4">
+                <RadioButton x:Name="rdselect_1" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="True" Content="Reservation ID" Click="Rdselect_1_Click"/>
+                <RadioButton x:Name="rdselect_2" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Client ID and Room Type" Click="Rdselect_2_Click"/>
+                <RadioButton x:Name="rdselect_3" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Room No and Date" Click="Rdselect_3_Click"/>
+            </StackPanel>
+            <Label Content="Select Reservation" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2"/>
+            <ComboBox Grid.Column="2" Grid.Row="2" x:Name="cmb_selectReID" materialDesign:HintAssist.Hint="Select Reservation ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+            <Label Content="Select Client" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="3"/>
+            <Grid Grid.Column="2" Grid.Row="3" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" x:Name="cmb_selectCID" materialDesign:HintAssist.Hint="Select Client ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+                <Label Content="Select Room ID" VerticalAlignment="Bottom" Grid.Column="1" Margin="10,0,0,0"/>
+                <ComboBox Grid.Column="2" x:Name="cmb_selectRoID" materialDesign:HintAssist.Hint="Select Room ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+            </Grid>
+            <Label Content="Select Room ID" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4"/>
+            <Grid Grid.Column="2" Grid.Row="4" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" x:Name="cmb_selectRoID2" materialDesign:HintAssist.Hint="Select Room ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+                <Label Content="Select Resrvation Date" VerticalAlignment="Bottom" Grid.Column="1" Margin="10,0,0,0"/>
+                <DatePicker Grid.Column="2" x:Name="dtpick_rsv" materialDesign:HintAssist.Hint="MM/DD/YYYY" Margin="0,5,0,0"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Delete" FontSize="22" Height="40" Grid.Column="1" FontWeight="Bold"/>
+            <Button Content="Reset" FontSize="22" Height="40" Grid.Column="3" FontWeight="Bold"/>
+            <Button Content="Exit" FontSize="22" Height="40" Grid.Column="5" Background="#F22222" Foreground="#ffffff" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Window>

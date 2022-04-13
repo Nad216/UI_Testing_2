@@ -23,8 +23,10 @@ namespace UI_Testing_2
         DB_connetions log1 = new DB_connetions();
         Color_codes ccg = new Color_codes();
         DataTable dt;
-        DataTable dt_R;
-        DataTable dt_C;
+        DataTable dt_R_in;
+        DataTable dt_C_in;
+        DataTable dt_R_out;
+        DataTable dt_C_out;
 
         public CancelReserve()
         {
@@ -32,15 +34,18 @@ namespace UI_Testing_2
 
             user_chip.Content = log1.username();
             SelectionDisable(true, false, false);
-            refresh();
-            update_combos();
+            Refresh();
+            Update_Combos();
         }
 
-        private void refresh()
+        private void Refresh()
         {
             dt = log1.ConSelect("Reservation");
-            dt_R = log1.ConSelect("Reservation INNER JOIN Room ON Reservation.Ro_ID = Room.Room_ID","Reservation.Reser_ID, Reservation.C_ID, Reservation.Start_day, Reservation.Status, Room.Room_ID, Room.Room_Type, Room.Floor");
-            dt_C = log1.ConSelect("Reservation INNER JOIN Client ON Reservation.C_ID = Client.Client_ID","Reservation.Reser_ID, Reservation.Start_day, Reservation.Status, Client.Client_ID, Client.Client_name, Client.E_mail");
+            dt_R_out = log1.ConSelect("Reservation RIGHT JOIN Room ON Reservation.Ro_ID = Room.Room_ID", "Reservation.Reser_ID, Reservation.C_ID, Reservation.Start_day, Reservation.Status, Room.Room_ID, Room.Room_Type, Room.Floor");
+            dt_C_out = log1.ConSelect("Reservation RIGHT JOIN Client ON Reservation.C_ID = Client.Client_ID","Reservation.Reser_ID, Reservation.Start_day, Reservation.Status, Client.Client_ID, Client.Client_name, Client.E_mail");
+            dt_R_in = log1.ConSelect("Reservation INNER JOIN Room ON Reservation.Ro_ID = Room.Room_ID", "Reservation.Reser_ID, Reservation.C_ID, Reservation.Start_day, Reservation.Status, Room.Room_ID, Room.Room_Type, Room.Floor");
+            dt_C_in = log1.ConSelect("Reservation INNER JOIN Client ON Reservation.C_ID = Client.Client_ID", "Reservation.Reser_ID, Reservation.Start_day, Reservation.Status, Client.Client_ID, Client.Client_name, Client.E_mail");
+
         }
 
         private void ClearValues()
@@ -48,8 +53,6 @@ namespace UI_Testing_2
             cmb_selectReID.SelectedIndex = -1;
             cmb_selectCID.SelectedIndex = -1;
             cmb_selectRoID.SelectedIndex = -1;
-            cmb_selectRoID2.SelectedIndex = -1;
-            dtpick_rsv.Text = "";
             // Left side items
             lbl_RE_ID1.Text = "";
             lbl_CL_ID1.Text = "";
@@ -60,21 +63,22 @@ namespace UI_Testing_2
             lbl_eligibility.Text = "";
             lbl_paystatus.Text = "";
             lbl_refund.Text = "";
+            //additinals
+            btn_cancel.IsEnabled = false;
+            
         }
+        
 
-
-        private void update_combos()
+        private void Update_Combos()
         {   //Opt 1
             cmb_selectReID.ItemsSource = dt.DefaultView;
             cmb_selectReID.DisplayMemberPath = "Reser_ID";
             //Opt 2
-            cmb_selectCID.ItemsSource = dt_C.DefaultView;
+            cmb_selectCID.ItemsSource = dt_C_out.DefaultView;
             cmb_selectCID.DisplayMemberPath = "Client_name";
-            cmb_selectRoID.ItemsSource = dt_R.DefaultView;
+            cmb_selectRoID.ItemsSource = dt_R_out.DefaultView;
             cmb_selectRoID.DisplayMemberPath = "Room_Type";
-            //Opt 3
-            cmb_selectRoID2.ItemsSource = dt_R.DefaultView;
-            cmb_selectRoID2.DisplayMemberPath = "Room_Type";
+            //Opt 3 - Deleted
 
         }
 
@@ -83,8 +87,6 @@ namespace UI_Testing_2
             cmb_selectReID.IsEnabled = Op1;
             cmb_selectCID.IsEnabled = Op2;
             cmb_selectRoID.IsEnabled = Op2;
-            cmb_selectRoID2.IsEnabled = Op3;
-            dtpick_rsv.IsEnabled = Op3;
             ClearValues();
         }
 
@@ -103,9 +105,5 @@ namespace UI_Testing_2
             SelectionDisable(false, true, false);
         }
 
-        private void Rdselect_3_Click(object sender, RoutedEventArgs e)
-        {
-            SelectionDisable(false, false, true);
-        }
     }
 }

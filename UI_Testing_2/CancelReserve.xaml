@@ -86,8 +86,7 @@
             <StackPanel HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="4">
                 <RadioButton x:Name="rdselect_1" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="True" Content="Reservation ID" Click="Rdselect_1_Click"/>
                 <RadioButton x:Name="rdselect_2" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Client ID and Room ID" Click="Rdselect_2_Click"/>
-                <RadioButton x:Name="rdselect_3" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Room No and Date" Click="Rdselect_3_Click"/>
-            </StackPanel>
+             </StackPanel>
             <Label Content="Select Reservation" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2"/>
             <ComboBox Grid.Column="2" Grid.Row="2" x:Name="cmb_selectReID" materialDesign:HintAssist.Hint="Select Reservation ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
             <Label Content="Select Client" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="3"/>
@@ -97,28 +96,18 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="2.5*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" x:Name="cmb_selectCID" materialDesign:HintAssist.Hint="Select Client ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
-                <Label Content="Select Room ID" VerticalAlignment="Bottom" Grid.Column="1" Margin="10,0,0,0"/>
-                <ComboBox Grid.Column="2" x:Name="cmb_selectRoID" materialDesign:HintAssist.Hint="Select Room ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+                <ComboBox Grid.Column="0" x:Name="cmb_selectCID" materialDesign:HintAssist.Hint="Select Client Name" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+                <Label Content="Select Room Type" VerticalAlignment="Bottom" Grid.Column="1" Margin="10,0,0,0"/>
+                <ComboBox Grid.Column="2" x:Name="cmb_selectRoID" materialDesign:HintAssist.Hint="Select Room Type" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
             </Grid>
-            <Label Content="Select Room ID" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="4"/>
-            <Grid Grid.Column="2" Grid.Row="4" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2.5*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="2.5*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" x:Name="cmb_selectRoID2" materialDesign:HintAssist.Hint="Select Room ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
-                <Label Content="Select Resrvation Date" VerticalAlignment="Bottom" Grid.Column="1" Margin="10,0,0,0"/>
-                <DatePicker Grid.Column="2" x:Name="dtpick_rsv" materialDesign:HintAssist.Hint="MM/DD/YYYY" Margin="0,5,0,0"/>
-            </Grid>
+            
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Background="#dddddd" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
                 <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
             <materialDesign:Card Grid.Column="1" Margin="10">
@@ -135,16 +124,23 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Column="0" Grid.Row="0" Text="Reservation ID - " Margin="6" FontWeight="Bold" />
                     <TextBlock x:Name="lbl_RE_ID1" Grid.Column="1" Grid.Row="0" Text="  " Margin="6"/>
-                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Client Name - " Margin="6" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Client ID - " Margin="6" FontWeight="Bold" />
                     <TextBlock x:Name="lbl_CL_ID1" Grid.Column="1" Grid.Row="1" Text="  " Margin="6"/>
-                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Room Type - " Margin="6" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Room ID - " Margin="6" FontWeight="Bold" />
                     <TextBlock x:Name="lbl_RO_ID1" Grid.Column="1" Grid.Row="2" Text="  " Margin="6"/>
                     <TextBlock Grid.Column="0" Grid.Row="3" Text="Reservation Date - " Margin="6" FontWeight="Bold" />
                     <TextBlock x:Name="lbl_Date_ID1" Grid.Column="1" Grid.Row="3" Text="  " Margin="6"/>
                 </Grid>
             </materialDesign:Card>
-
-            <materialDesign:Card Grid.Column="3" Margin="10">
+            <Grid Grid.Column="3" Margin="15,0,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Button BorderBrush="#307001" Background="#60D020" Foreground="#10500D" Margin="0,5,0,10" Grid.Row="1" Content="Validate" FontWeight="Bold"/>
+            </Grid>
+            <materialDesign:Card Grid.Column="2" Margin="10">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -179,9 +175,9 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Cancel" FontSize="22" Height="40" Grid.Column="1" FontWeight="Bold"/>
-            <Button Content="Reset" FontSize="22" Height="40" Grid.Column="3" FontWeight="Bold"/>
-            <Button Content="Exit" FontSize="22" Height="40" Grid.Column="5" Background="#F22222" Foreground="#ffffff" FontWeight="Bold"/>
+            <Button x:Name="btn_cancel" Content="Cancel" FontSize="22" Height="40" Grid.Column="1" FontWeight="Bold"/>
+            <Button x:Name="btn_reset" Content="Reset" FontSize="22" Height="40" Grid.Column="3" FontWeight="Bold"/>
+            <Button x:Name="btn_exit" Content="Exit" FontSize="22" Height="40" Grid.Column="5" Background="#F22222" Foreground="#ffffff" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Window>

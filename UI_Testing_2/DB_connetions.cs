@@ -39,10 +39,16 @@ namespace UI_Testing_2
                 da.Fill(data);
                 if (data.Tables[0].Rows.Count > 0)
                 {
-                    chk = 1;
-                    user_ID = data.Tables[0].Rows[0]["User_ID"].ToString();
-                    user_name = data.Tables[0].Rows[0]["User_name"].ToString();
-                    Auth_level = Convert.ToInt16(data.Tables[0].Rows[0]["Auth_Level"]);
+                    if (pass == data.Tables[0].Rows[0]["User_Password"].ToString())
+                    { chk = 1;
+                        user_ID = data.Tables[0].Rows[0]["User_ID"].ToString();
+                        user_name = data.Tables[0].Rows[0]["User_name"].ToString();
+                        Auth_level = Convert.ToInt16(data.Tables[0].Rows[0]["Auth_Level"]);
+                    }
+                    else
+                    {
+                        chk = 0;
+                    }
                 }
                 else
                     chk = 0;

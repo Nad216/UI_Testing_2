@@ -105,5 +105,9 @@ namespace UI_Testing_2
             SelectionDisable(false, true, false);
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

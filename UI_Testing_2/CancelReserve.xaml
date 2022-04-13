@@ -138,7 +138,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="10"/>
                 </Grid.RowDefinitions>
-                <Button BorderBrush="#307001" Background="#60D020" Foreground="#10500D" Margin="0,5,0,10" Grid.Row="1" Content="Validate" FontWeight="Bold"/>
+                <Button BorderBrush="#307001" Background="#60D020" Foreground="#10500D" Margin="0,5,0,10" Grid.Row="1" Content="Validate" FontWeight="Bold" Click="Button_Click"/>
             </Grid>
             <materialDesign:Card Grid.Column="2" Margin="10">
                 <Grid>

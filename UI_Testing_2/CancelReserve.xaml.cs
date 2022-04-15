@@ -24,7 +24,6 @@ namespace UI_Testing_2
         DB_connetions log1 = new DB_connetions();
         Color_codes ccg = new Color_codes();
         DataTable dt;
-        DataTable dt_R_in;
         DataTable dt_C_in;
         DataTable dt_select;
 
@@ -42,13 +41,7 @@ namespace UI_Testing_2
         {
 
             dt = log1.ConSelect("Reservation");
-            dt_R_in = log1.ConSelect("Reservation INNER JOIN Room ON Reservation.Ro_ID = Room.Room_ID", "Reservation.Reser_ID, Reservation.C_ID, Reservation.Start_day, Reservation.Start_day , Reservation.Status, Room.Room_ID, Room.Room_Type, Room.Floor");
-            dt_C_in = log1.ConSelect("Reservation INNER JOIN Client ON Reservation.C_ID = Client.Client_ID", "Reservation.Reser_ID, Reservation.Start_day, Reservation.Status, Client.Client_ID, Client.Client_name, Client.E_mail");
-
-        }
-
-        private void select_client_data()
-        {
+             dt_C_in = log1.ConSelect("Reservation INNER JOIN Client ON Reservation.C_ID = Client.Client_ID", "Reservation.Reser_ID, Reservation.Start_day, Reservation.Status, Client.Client_ID, Client.Client_name, Client.E_mail");
 
         }
 
@@ -183,9 +176,10 @@ namespace UI_Testing_2
             else
             {
                 lbl_eligibility.Text = "Not Eligable";
-            }
+            }   
             lbl_duplicates.Text = "No";
-            lbl_RO_ID1.Text = sel_data.Rows[a]["Ro_ID"].ToString();
+            // This wont be in schema
+            //lbl_RO_ID1.Text = sel_data.Rows[a]["Ro_ID"].ToString();
             lbl_CL_ID1.Text = sel_data.Rows[a]["C_ID"].ToString();
             lbl_RE_ID1.Text = sel_data.Rows[a]["Reser_ID"].ToString();
         }

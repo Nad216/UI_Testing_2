@@ -126,7 +126,7 @@
                     <TextBlock x:Name="lbl_RE_ID1" Grid.Column="1" Grid.Row="0" Text="  " Margin="6"/>
                     <TextBlock Grid.Column="0" Grid.Row="1" Text="Client ID - " Margin="6" FontWeight="Bold" />
                     <TextBlock x:Name="lbl_CL_ID1" Grid.Column="1" Grid.Row="1" Text="  " Margin="6"/>
-                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Room ID - " Margin="6" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Rooms - " Margin="6" FontWeight="Bold" />
                     <TextBlock x:Name="lbl_RO_ID1" Grid.Column="1" Grid.Row="2" Text="  " Margin="6"/>
                     <TextBlock Grid.Column="0" Grid.Row="3" Text="Reservation Date - " Margin="6" FontWeight="Bold" />
                     <TextBlock x:Name="lbl_Date_ID1" Grid.Column="1" Grid.Row="3" Text="  " Margin="6"/>

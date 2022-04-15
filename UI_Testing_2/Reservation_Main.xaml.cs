@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,25 @@ namespace UI_Testing_2
     /// </summary>
     public partial class Reservation_Main : Window
     {
+        DB_connetions log1 = new DB_connetions();
+        Color_codes ccg = new Color_codes();
+        DataTable dt;
+        DataSet ds;
+
         public Reservation_Main()
         {
             InitializeComponent();
+            Refresh();
+        }
+        private void Refresh()
+        {
+            dt = log1.ConSelect("Reservation");
+            Reser_data.ItemsSource = dt.DefaultView;
+        }
+
+        private void Btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

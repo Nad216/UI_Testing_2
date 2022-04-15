@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:s="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
@@ -68,6 +67,6 @@
                 <Image Source="Elements\Close1.png"/>
             </Button>
         </Grid>
-        
+        <DataGrid x:Name="Reser_data" Grid.Row="2"/>
     </Grid>
 </Window>

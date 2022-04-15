@@ -40,6 +40,8 @@ namespace UI_Testing_2
         private void Btn_reser_Click(object sender, RoutedEventArgs e)
         {
             //Lakshan's WPF Form ADD to Here
+            Reservation_Main resm = new Reservation_Main();
+            resm.ShowDialog();
         }
 
         private void Btn_reserCancel_Click(object sender, RoutedEventArgs e)

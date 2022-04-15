@@ -64,7 +64,7 @@
             <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Cancel Reservations" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
             <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{x:Static s:DateTime.Now}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
             <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
-                <Image Source="Elements\Close1.png"/>
+                <materialDesign:PackIcon Foreground="#ffaf00"  Kind="CloseBox" VerticalAlignment="Center" Width="30" Height="30" />
             </Button>            
         </Grid>
         <Grid Grid.Row="1" Margin="10">

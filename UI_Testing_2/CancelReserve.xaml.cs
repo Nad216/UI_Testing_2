@@ -162,34 +162,44 @@ namespace UI_Testing_2
 
         private void Cmb_selectRoID_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int n = cmb_selectRoID.SelectedIndex;
-            lbl_eligibility.Text = cmb_selectCID.SelectedIndex.ToString();
             if (cmb_selectCID.SelectedIndex == -1)
             {
                 ClearValues_detail();
             }
             else
             {
-                Fill_Reser_details(n);
+                Fill_Reser_details(cmb_selectRoID.SelectedIndex,dt_select);
             }
         }
 
-        private void Fill_Reser_details(int a)
+        private void Fill_Reser_details(int a,DataTable sel_data)
         {
-            string b = (DateTime.Today - Convert.ToDateTime(dt_select.Rows[a]["Start_day"])).ToString();
-            lbl_Date_ID1.Text = dt_select.Rows[a]["Start_day"].ToString().Remove(9);
+            string b = (DateTime.Today - Convert.ToDateTime(sel_data.Rows[a]["Start_day"])).ToString();
+            lbl_Date_ID1.Text = sel_data.Rows[a]["Start_day"].ToString().Remove(9);
             if (Convert.ToInt16(b.Remove(2)) >= 10)
             {
-                lbl_eligibility.Text = "Eligable";
+                lbl_eligibility.Text = "Eligable" ;
             }
             else
             {
                 lbl_eligibility.Text = "Not Eligable";
             }
             lbl_duplicates.Text = "No";
-            lbl_RO_ID1.Text = dt_select.Rows[a]["Ro_ID"].ToString();
-            lbl_CL_ID1.Text = dt_select.Rows[a]["C_ID"].ToString();
-            lbl_RE_ID1.Text = dt_select.Rows[a]["Reser_ID"].ToString();
+            lbl_RO_ID1.Text = sel_data.Rows[a]["Ro_ID"].ToString();
+            lbl_CL_ID1.Text = sel_data.Rows[a]["C_ID"].ToString();
+            lbl_RE_ID1.Text = sel_data.Rows[a]["Reser_ID"].ToString();
+        }
+
+        private void Cmb_selectReID_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmb_selectReID.SelectedIndex == -1)
+            {
+                ClearValues_detail();
+            }
+            else
+            {
+                Fill_Reser_details(cmb_selectReID.SelectedIndex,dt);
+            }
         }
     }
 }

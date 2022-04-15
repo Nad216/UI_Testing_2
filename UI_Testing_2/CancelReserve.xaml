@@ -89,7 +89,7 @@
                 <RadioButton x:Name="rdselect_3" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Client Name and Date" Click="Rdselect_3_Click"/>
             </StackPanel>
             <Label Content="Select Reservation" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2"/>
-            <ComboBox Grid.Column="2" Grid.Row="2" x:Name="cmb_selectReID" materialDesign:HintAssist.Hint="Select Reservation ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+            <ComboBox Grid.Column="2" Grid.Row="2" x:Name="cmb_selectReID" materialDesign:HintAssist.Hint="Select Reservation ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0" SelectionChanged="Cmb_selectReID_SelectionChanged"/>
             <Label Content="Select Client" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="3"/>
             <Grid Grid.Column="2" Grid.Row="3" >
                 <Grid.ColumnDefinitions>

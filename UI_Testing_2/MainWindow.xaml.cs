@@ -47,7 +47,7 @@ namespace UI_Testing_2
             msg_txt.Foreground = ccg.cd_fill("#FF0000");
         }
 
-        public void information_msg()
+        public void Information_msg()
         {
             msg_ok.Background = ccg.cd_fill("#197EFF");
             msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
@@ -89,7 +89,7 @@ namespace UI_Testing_2
             else if (log1.Check_Login(txt_username.Text, txt_pass.Password) == 1)
             {
                 msg_txt.Text = "Login Successful";
-                this.information_msg();
+                this.Information_msg();
                 Auth_LV = log1.Auth();
                 User_ID = log1.user();
             }

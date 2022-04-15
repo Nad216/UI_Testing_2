@@ -21,7 +21,7 @@ namespace UI_Testing_2
 
         public DB_connetions()
         {
-            con = new SqlConnection("Data Source=DESKTOP-TF1RLQU;Initial Catalog=GAD_Testing;Integrated Security=True");
+            con = new SqlConnection("Data Source=DESKTOP-F0LGUQ2;Initial Catalog=GAD_Testing;Integrated Security=True");
 
         }
 
@@ -30,7 +30,6 @@ namespace UI_Testing_2
             int chk;
             try
             {
-                
                 con.Open();
                 da = new SqlDataAdapter();
                 cmd = new SqlCommand("Select * from System_logins where User_name='" + user + "'  and User_Password='" + pass + "'", con);
@@ -40,10 +39,16 @@ namespace UI_Testing_2
                 da.Fill(data);
                 if (data.Tables[0].Rows.Count > 0)
                 {
-                    chk = 1;
-                    user_ID = data.Tables[0].Rows[0]["User_ID"].ToString();
-                    user_name = data.Tables[0].Rows[0]["User_name"].ToString();
-                    Auth_level = Convert.ToInt16(data.Tables[0].Rows[0]["Auth_Level"]);
+                    if (pass == data.Tables[0].Rows[0]["User_Password"].ToString())
+                    { chk = 1;
+                        user_ID = data.Tables[0].Rows[0]["User_ID"].ToString();
+                        user_name = data.Tables[0].Rows[0]["User_name"].ToString();
+                        Auth_level = Convert.ToInt16(data.Tables[0].Rows[0]["Auth_Level"]);
+                    }
+                    else
+                    {
+                        chk = 0;
+                    }
                 }
                 else
                     chk = 0;
@@ -88,7 +93,7 @@ namespace UI_Testing_2
             try { 
                 da = new SqlDataAdapter();
                 con.Open();
-                cmd = new SqlCommand("Select * from '" + table + "'", con);
+                cmd = new SqlCommand("Select * from " + table + "", con);
                 da.SelectCommand = cmd;
                 da.Fill(dt);
                 con.Close();
@@ -98,6 +103,31 @@ namespace UI_Testing_2
                 chk = 1;
             }
             catch(Exception)
+            {
+                chk = 2;
+            }
+            return dt;
+        }
+
+        public DataTable ConSelect(string table,string datatype)
+        {
+            chk = 0;
+            DataTable dt = new DataTable();
+            try
+            {
+                da = new SqlDataAdapter();
+                con.Open();
+
+                cmd = new SqlCommand("Select "+datatype+" from "+table+"", con);
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+                con.Close();
+            }
+            catch (SqlException)
+            {
+                chk = 1;
+            }
+            catch (Exception)
             {
                 chk = 2;
             }
@@ -212,6 +242,29 @@ namespace UI_Testing_2
             {
                 con.Open();
                 cmd = new SqlCommand("Insert into " + table + " ('" + detailtype_1 + "','" + detailtype_2 + "') values ('" + detail_1 + "','" + detail_2 + "'); ", con);
+                chk = cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (SqlException)
+            {
+                chk = 2;
+            }
+            catch (Exception)
+            {
+                chk = 3;
+            }
+
+            return chk;
+        }
+
+        public int ConUpdate(string command)
+        {
+            chk = 0;
+
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(command, con);
                 chk = cmd.ExecuteNonQuery();
                 con.Close();
             }

@@ -1,2 +1,2 @@
-# UI_Testing_2
+# Hotel Reservation System
 Simple Reservation System

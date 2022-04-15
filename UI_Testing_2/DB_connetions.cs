@@ -21,7 +21,7 @@ namespace UI_Testing_2
 
         public DB_connetions()
         {
-            con = new SqlConnection("Data Source=DESKTOP-TF1RLQU;Initial Catalog=GAD_Testing;Integrated Security=True");
+            con = new SqlConnection("Data Source=DESKTOP-F0LGUQ2;Initial Catalog=GAD_Testing;Integrated Security=True");
 
         }
 
@@ -117,10 +117,7 @@ namespace UI_Testing_2
             {
                 da = new SqlDataAdapter();
                 con.Open();
-                string a = datatype;
-                string b = table;
-                string c = a + b;
-                a = c;
+
                 cmd = new SqlCommand("Select "+datatype+" from "+table+"", con);
                 da.SelectCommand = cmd;
                 da.Fill(dt);

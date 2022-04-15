@@ -85,10 +85,11 @@
             <Label Content="Select by" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
             <StackPanel HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="4">
                 <RadioButton x:Name="rdselect_1" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="True" Content="Reservation ID" Click="Rdselect_1_Click"/>
-                <RadioButton x:Name="rdselect_2" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Client ID and Room ID" Click="Rdselect_2_Click"/>
-             </StackPanel>
+                <RadioButton x:Name="rdselect_2" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Client NIC and Date" Click="Rdselect_2_Click"/>
+                <RadioButton x:Name="rdselect_3" Style="{StaticResource MaterialDesignTabRadioButtonTop}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" Margin="4" IsChecked="False" Content="Client Name and Date" Click="Rdselect_3_Click"/>
+            </StackPanel>
             <Label Content="Select Reservation" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2"/>
-            <ComboBox Grid.Column="2" Grid.Row="2" x:Name="cmb_selectReID" materialDesign:HintAssist.Hint="Select Reservation ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+            <ComboBox Grid.Column="2" Grid.Row="2" x:Name="cmb_selectReID" materialDesign:HintAssist.Hint="Select Reservation ID" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0" SelectionChanged="Cmb_selectReID_SelectionChanged"/>
             <Label Content="Select Client" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="3"/>
             <Grid Grid.Column="2" Grid.Row="3" >
                 <Grid.ColumnDefinitions>
@@ -96,9 +97,9 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="2.5*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" x:Name="cmb_selectCID" materialDesign:HintAssist.Hint="Select Client Name" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
-                <Label Content="Select Room Type" VerticalAlignment="Bottom" Grid.Column="1" Margin="10,0,0,0"/>
-                <ComboBox Grid.Column="2" x:Name="cmb_selectRoID" materialDesign:HintAssist.Hint="Select Room Type" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0"/>
+                <ComboBox Grid.Column="0" x:Name="cmb_selectCID" materialDesign:HintAssist.Hint="Select Client" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0" SelectionChanged="Cmb_selectCID_SelectionChanged"/>
+                <Label Content="Select Reservation Date" VerticalAlignment="Bottom" Grid.Column="1" Margin="10,0,0,0"/>
+                <ComboBox Grid.Column="2" x:Name="cmb_selectRoID" materialDesign:HintAssist.Hint="Reservation Date" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="0,5,0,0" SelectionChanged="Cmb_selectRoID_SelectionChanged"/>
             </Grid>
             
         </Grid>
@@ -138,7 +139,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="10"/>
                 </Grid.RowDefinitions>
-                <Button BorderBrush="#307001" Background="#60D020" Foreground="#10500D" Margin="0,5,0,10" Grid.Row="1" Content="Validate" FontWeight="Bold"/>
+                <Button x:Name="btn_valid" BorderBrush="#307001" Background="#60D020" Foreground="#10500D" Margin="0,5,0,10" Grid.Row="1" Content="Validate" FontWeight="Bold" />
             </Grid>
             <materialDesign:Card Grid.Column="2" Margin="10">
                 <Grid>
@@ -157,10 +158,10 @@
                     <TextBlock Grid.Column="0" Grid.Row="2" Text="Eligibility" Margin="6" FontWeight="Bold" />
                     <TextBlock Grid.Column="0" Grid.Row="3" Text="Refund" Margin="6" FontWeight="Bold" />
 
-                    <TextBlock x:Name="lbl_duplicates" Grid.Column="1" Grid.Row="2" Text="  " Margin="6"/>
-                    <TextBlock x:Name="lbl_paystatus" Grid.Column="1" Grid.Row="2" Text="  " Margin="6"/>
+                    <TextBlock x:Name="lbl_duplicates" Grid.Column="1" Grid.Row="0" Text="  " Margin="6"/>
+                    <TextBlock x:Name="lbl_paystatus" Grid.Column="1" Grid.Row="1" Text="  " Margin="6"/>
                     <TextBlock x:Name="lbl_eligibility" Grid.Column="1" Grid.Row="2" Text="  " Margin="6"/>
-                    <TextBlock x:Name="lbl_refund" Grid.Column="1" Grid.Row="2" Text="  " Margin="6"/>
+                    <TextBlock x:Name="lbl_refund" Grid.Column="1" Grid.Row="3" Text="  " Margin="6"/>
 
                 </Grid>
             </materialDesign:Card>

@@ -36,7 +36,11 @@ namespace UI_Testing_2
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs("Now"));
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("Full"));
+                PropertyChanged(this, new PropertyChangedEventArgs("Date"));
+                PropertyChanged(this, new PropertyChangedEventArgs("Time"));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

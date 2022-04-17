@@ -124,11 +124,11 @@
         </StackPanel>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="28"/>  
+            </Grid.RowDefinitions>        
         <materialDesign:DialogHost x:Name="DialogHost" >
             <materialDesign:DialogHost.DialogContent>
                 <Grid Margin="20">
@@ -166,8 +166,7 @@
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
             <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Hotel Reservation System" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-            <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{Binding Source={StaticResource ticker}, Path=Date, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold"/>
-            <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
+                <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
                 <materialDesign:PackIcon Foreground="#ffbf00"  Kind="CloseBox" VerticalAlignment="Center" Width="30" Height="30" />
             </Button>
         </Grid>
@@ -218,6 +217,16 @@
                     </StackPanel>
                 </Grid>
            </Grid>
+            <Grid Grid.Row="3" Background="#ECECEC">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <Label Foreground="Black" Grid.Column="2" Content="{Binding Source={StaticResource ticker}, Path=Full, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Right"  FontWeight="Black"/>
+
+            </Grid>
         </Grid>
     </Grid>
 </Window>

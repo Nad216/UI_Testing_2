@@ -24,7 +24,7 @@ namespace UI_Testing_2
         public DashBoard1()
         {
             InitializeComponent();
-            user_chip.Content = log1.username();
+            user_chip.Text = log1.username();
         }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
@@ -63,6 +63,41 @@ namespace UI_Testing_2
         private void Btn_Genrepos_Click(object sender, RoutedEventArgs e)
         {
             //WPF Form for reports ADD to Here (not yet Decided how or how many)
+        }
+        private void Dashboard_Menu_change(bool value,UIElement menu)
+        {
+            if (value)
+            {
+                menu.Visibility = Visibility.Visible;
+                menu.IsEnabled = true;
+            }
+            else
+            {
+                menu.Visibility = Visibility.Hidden;
+                menu.IsEnabled = false;
+            }
+        }
+
+        private void overviewall()
+        {
+            if (rd_Overview.IsChecked == true)
+            {
+                Dashboard_Menu_change(true, view_Overview);
+            }
+            else
+            { 
+                Dashboard_Menu_change(false, view_Overview);
+            }
+        }
+
+        private void Rd_Overview_Click(object sender, RoutedEventArgs e)
+        {
+            overviewall();
+        }
+
+        private void Rd_Reser_Click(object sender, RoutedEventArgs e)
+        {
+            overviewall();
         }
     }
 }

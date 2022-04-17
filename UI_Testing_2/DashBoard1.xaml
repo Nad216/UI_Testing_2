@@ -14,12 +14,121 @@
         Title="MainWindow" Height="500" Width="800" AllowsTransparency="True" WindowStyle="None" Background="#FFFFFF" WindowStartupLocation="CenterScreen">
 
     <Grid>
-        <Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="cdmas" Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <StackPanel.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FCFCFC" Offset="0"/>
+                    <GradientStop Color="#DEDEDE" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            
+            <Grid Background="#FF3D00A4">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <materialDesign:PackIcon Foreground="White" Grid.Column="1" Grid.Row="0" Kind="AccountCircle" VerticalAlignment="Center" HorizontalAlignment="Center" Height="80" Width="90" Margin="10"/>
+                <TextBlock Foreground="White" x:Name="user_chip" Grid.Column="1" Grid.Row="1" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="UltraBold"/>
+            </Grid>
+            <RadioButton x:Name="rd_Overview" Style="{StaticResource MenuButton}" IsChecked="True" Click="Rd_Overview_Click">
+                <RadioButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="ViewList" VerticalAlignment="Center" Height="28" Width="25"  />
+                        <TextBlock Grid.Column="3" Text="Overview" FontSize="20"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton x:Name="rd_Reser" Style="{StaticResource MenuButton}" Click="Rd_Reser_Click">
+                <RadioButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="CalendarClock" VerticalAlignment="Center" Height="28" Width="25" />
+                        <TextBlock Grid.Column="3" Text="Reservation" FontSize="20"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton Style="{StaticResource MenuButton}">
+                <RadioButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="CurrencyUsd" VerticalAlignment="Center" Height="28" Width="25" />
+                        <TextBlock Grid.Column="3" Text="Payment" FontSize="20"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton Style="{StaticResource MenuButton}">
+                <RadioButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="Account" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Grid.Column="3" Text="Name" FontSize="20"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton Style="{StaticResource MenuButton}">
+                <RadioButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="Account" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Grid.Column="3" Text="Name" FontSize="20"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
+            <Button Width="140" Height="40" Content="Log Out" FontWeight="Bold" FontSize="18" materialDesign:ButtonAssist.CornerRadius="20" Margin="10"/>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
             <RowDefinition Height="0"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        
         <materialDesign:DialogHost x:Name="DialogHost" >
             <materialDesign:DialogHost.DialogContent>
                 <Grid Margin="20">
@@ -56,9 +165,6 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="5,2,5,2" Foreground="#D6D8F3" Grid.Column="1" Grid.Row="1" Text="User" VerticalAlignment="Center" FontWeight="Bold" FontSize="15" />
-            <materialDesign:Chip x:Name="user_chip"  Margin="5,2,5,2" Grid.Column="2" Grid.Row="1" Content="name" FontSize="15" Foreground="#354875" Background="#A5A8F8"/>
-            <Button materialDesign:ButtonAssist.CornerRadius="15" Margin="5,2,5,2" Grid.Column="3" Grid.Row="1" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" ToolTip="Logout" Content="Log out" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
             <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Hotel Reservation System" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
             <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{Binding Source={StaticResource ticker}, Path=Date, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold"/>
             <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
@@ -80,119 +186,38 @@
             </materialDesign:Flipper>
         </Grid>
         <Grid Grid.Row="2" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="0"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Column="1" Grid.Row="1">
-                <StackPanel.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#FCFCFC" Offset="0"/>
-                        <GradientStop Color="#DEDEDE" Offset="1"/>
-                    </LinearGradientBrush>
-                </StackPanel.Background>
-                <RadioButton x:Name="rd_Overview" Style="{StaticResource MenuButton}" IsChecked="True">
-                    <RadioButton.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="5"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <materialDesign:PackIcon Grid.Column="1" Kind="ViewList" VerticalAlignment="Center" Height="28" Width="25"  />
-                            <TextBlock Grid.Column="3" Text="Overview" FontSize="20"/>
-                        </Grid>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Style="{StaticResource MenuButton}">
-                    <RadioButton.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <materialDesign:PackIcon Grid.Column="1" Kind="CalendarClock" VerticalAlignment="Center" Height="28" Width="25" />
-                            <TextBlock Grid.Column="3" Text="Reservation" FontSize="20"/>
-                        </Grid>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Style="{StaticResource MenuButton}">
-                    <RadioButton.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <materialDesign:PackIcon Grid.Column="1" Kind="CurrencyUsd" VerticalAlignment="Center" Height="28" Width="25" />
-                            <TextBlock Grid.Column="3" Text="Payment" FontSize="20"/>
-                        </Grid>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Style="{StaticResource MenuButton}">
-                    <RadioButton.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <materialDesign:PackIcon Grid.Column="1" Kind="Account" VerticalAlignment="Center" Height="30" Width="30" />
-                            <TextBlock Grid.Column="3" Text="Name" FontSize="20"/>
-                        </Grid>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Style="{StaticResource MenuButton}">
-                    <RadioButton.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <materialDesign:PackIcon Grid.Column="1" Kind="Account" VerticalAlignment="Center" Height="30" Width="30" />
-                            <TextBlock Grid.Column="3" Text="Name" FontSize="20"/>
-                        </Grid>
-                    </RadioButton.Content>
-                </RadioButton>
-            </StackPanel>
-            <StackPanel materialDesign:ColorZoneAssist.Mode="PrimaryDark" Grid.Column="3" Grid.Row="1" Background="#CFDFFF">
-                <Button  x:Name="btn_Overview" Click="Btn_chkinout_Click"   Grid.Column="2" Grid.Row="1">
-                        <TextBlock Text="Overview"/>
-                </Button>
-                <Button x:Name="btn_cusReg" Click="Btn_cusReg_Click"  Grid.Column="1" Grid.Row="0" >
-                    <TextBlock Text="Customer" />
-                </Button>
-                <Button x:Name="btn_reser" Click="Btn_reser_Click" Grid.Column="2" Grid.Row="0" >
-                    <TextBlock Text="Reservations" />
-                </Button>
-                <Button x:Name="btn_reserCancel" Click="Btn_reserCancel_Click"  Grid.Column="3" Grid.Row="0" >
-                    <TextBlock Text="Cancel Reservation" />
-                </Button>
-                <Button x:Name="btn_Payrec" Click="Btn_Payrec_Click" Grid.Column="1" Grid.Row="1" >
-                    <TextBlock Text="Make A Payment"/>
-                </Button>
-                <Button x:Name="btn_Reports" Click="Btn_Genrepos_Click" Grid.Column="3" Grid.Row="1" >
-                    <TextBlock Text="Reports" />
-                </Button>
-        </StackPanel>
+                <Grid x:Name="view_Overview" Grid.Row="1">
+                        
+                </Grid>
+                <Grid x:Name="view_Reservation" Grid.Row="0">
+                    <StackPanel materialDesign:ColorZoneAssist.Mode="PrimaryDark" Background="#CFDFFF">
+                        <Button  x:Name="btn_Overview" Click="Btn_chkinout_Click">
+                            <TextBlock Text="Overview"/>
+                        </Button>
+                        <Button x:Name="btn_cusReg" Click="Btn_cusReg_Click" >
+                            <TextBlock Text="Customer" />
+                        </Button>
+                        <Button x:Name="btn_reser" Click="Btn_reser_Click" >
+                            <TextBlock Text="Reservations" />
+                        </Button>
+                        <Button x:Name="btn_reserCancel" Click="Btn_reserCancel_Click">
+                            <TextBlock Text="Cancel Reservation" />
+                        </Button>
+                        <Button x:Name="btn_Payrec" Click="Btn_Payrec_Click">
+                            <TextBlock Text="Make A Payment"/>
+                        </Button>
+                        <Button x:Name="btn_Reports" Click="Btn_Genrepos_Click">
+                            <TextBlock Text="Reports" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+           </Grid>
         </Grid>
     </Grid>
 </Window>

@@ -23,11 +23,15 @@
                         <Setter Property="Background" Value="#95DDFF"/>
                     </Trigger>
                     <Trigger Property="IsMouseCaptured" Value="True">
-                        <Setter Property="Background" Value="Blue"/>
+                        <Setter Property="Background" Value="#4DB8EA"/>
+                    </Trigger>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="Background" Value="#C7EBFC"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
             <local:Ticker x:Key="ticker"/>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

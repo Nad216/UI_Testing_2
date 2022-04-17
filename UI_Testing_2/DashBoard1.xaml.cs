@@ -83,11 +83,20 @@ namespace UI_Testing_2
             if (rd_Overview.IsChecked == true)
             {
                 Dashboard_Menu_change(true, view_Overview);
+                Dashboard_Menu_change(false, view_Reservation);
             }
-            else
+            else if (rd_Reser.IsChecked == true)
             { 
                 Dashboard_Menu_change(false, view_Overview);
+                Dashboard_Menu_change(true, view_Reservation);
             }
+            else
+            {
+                Dashboard_Menu_change(false, view_Overview);
+                Dashboard_Menu_change(false, view_Reservation);
+            }
+
+
         }
 
         private void Rd_Overview_Click(object sender, RoutedEventArgs e)

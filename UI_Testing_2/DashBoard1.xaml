@@ -192,9 +192,9 @@
                 <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
                 <Grid x:Name="view_Overview" Grid.Row="1">
-                        
+                    <TextBlock Text="Overview" FontSize="50"/>
                 </Grid>
-                <Grid x:Name="view_Reservation" Grid.Row="0">
+                <Grid x:Name="view_Reservation" Grid.Row="1">
                     <StackPanel materialDesign:ColorZoneAssist.Mode="PrimaryDark" Background="#CFDFFF">
                         <Button  x:Name="btn_Overview" Click="Btn_chkinout_Click">
                             <TextBlock Text="Overview"/>

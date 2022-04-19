@@ -25,6 +25,7 @@ namespace UI_Testing_2
         {
             InitializeComponent();
             user_chip.Text = log1.username();
+            overviewall();
         }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
@@ -105,6 +106,11 @@ namespace UI_Testing_2
         }
 
         private void Rd_Reser_Click(object sender, RoutedEventArgs e)
+        {
+            overviewall();
+        }
+
+        private void Rd_Payment_Click(object sender, RoutedEventArgs e)
         {
             overviewall();
         }

@@ -21,7 +21,7 @@ namespace UI_Testing_2
 
         public DB_connetions()
         {
-            con = new SqlConnection("Data Source=DESKTOP-F0LGUQ2;Initial Catalog=GAD_Testing;Integrated Security=True");
+            con = new SqlConnection("Server=tcp:gad-hotelreser.database.windows.net,1433;Initial Catalog=Hotel_Reser;Persist Security Info=False;User ID=admin-hr;Password=Hotel@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
         }
 

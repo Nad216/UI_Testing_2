@@ -42,8 +42,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <materialDesign:PackIcon Foreground="White" Grid.Column="1" Grid.Row="0" Kind="AccountCircle" VerticalAlignment="Center" HorizontalAlignment="Center" Height="80" Width="90" Margin="10"/>
-                <TextBlock Foreground="White" x:Name="user_chip" Grid.Column="1" Grid.Row="1" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="UltraBold"/>
+                <materialDesign:PackIcon  Foreground="White" Grid.Column="1" Grid.Row="0" Kind="AccountCircle" VerticalAlignment="Center" HorizontalAlignment="Center" Height="80" Width="90" Margin="10"/>
+                <TextBlock   Foreground="White" x:Name="user_chip" Grid.Column="1" Grid.Row="1" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="UltraBold"/>
             </Grid>
             <RadioButton x:Name="rd_Overview" Style="{StaticResource MenuButton}" IsChecked="True" Click="Rd_Overview_Click">
                 <RadioButton.Content>
@@ -75,7 +75,7 @@
                     </Grid>
                 </RadioButton.Content>
             </RadioButton>
-            <RadioButton Style="{StaticResource MenuButton}">
+            <RadioButton x:Name="rd_Payment" Style="{StaticResource MenuButton}" Click="Rd_Payment_Click">
                 <RadioButton.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>

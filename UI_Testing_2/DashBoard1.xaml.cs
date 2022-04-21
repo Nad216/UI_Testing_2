@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,19 @@ namespace UI_Testing_2
     {
         DB_connetions log1 = new DB_connetions();
         Color_codes ccg = new Color_codes();
+        DataTable dt_Reser = new DataTable();
+
         public DashBoard1()
         {
             InitializeComponent();
             user_chip.Text = log1.username();
             overviewall();
+        }
+
+        public void Refresh()
+        {
+            dt_Reser = log1.ConSelect("Reservation");
+            Reser_data.ItemsSource = dt_Reser.DefaultView;
         }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
@@ -41,8 +50,6 @@ namespace UI_Testing_2
         private void Btn_reser_Click(object sender, RoutedEventArgs e)
         {
             //Lakshan's WPF Form ADD to Here
-            Reservation_Main resm = new Reservation_Main();
-            resm.ShowDialog();
         }
 
         private void Btn_reserCancel_Click(object sender, RoutedEventArgs e)
@@ -56,15 +63,6 @@ namespace UI_Testing_2
             //Savindi's WPF Form ADD to Here
         }
 
-        private void Btn_chkinout_Click(object sender, RoutedEventArgs e)
-        {
-            //Savindu's WPF Form ADD to Here
-        }
-
-        private void Btn_Genrepos_Click(object sender, RoutedEventArgs e)
-        {
-            //WPF Form for reports ADD to Here (not yet Decided how or how many)
-        }
         private void Dashboard_Menu_change(bool value,UIElement menu)
         {
             if (value)
@@ -85,16 +83,25 @@ namespace UI_Testing_2
             {
                 Dashboard_Menu_change(true, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
+                Dashboard_Menu_change(false, view_other);
             }
             else if (rd_Reser.IsChecked == true)
             { 
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(true, view_Reservation);
+                Dashboard_Menu_change(false, view_other);
+            }
+            else if (rd_Payment.IsChecked == true)
+            {
+                Dashboard_Menu_change(false, view_Overview);
+                Dashboard_Menu_change(false, view_Reservation);
+                Dashboard_Menu_change(true, view_other);
             }
             else
             {
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
+                Dashboard_Menu_change(false, view_other);
             }
 
 

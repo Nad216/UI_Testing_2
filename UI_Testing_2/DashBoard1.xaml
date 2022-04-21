@@ -195,26 +195,31 @@
                     <TextBlock Text="Overview" FontSize="50"/>
                 </Grid>
                 <Grid x:Name="view_Reservation" Grid.Row="1">
-                    <StackPanel materialDesign:ColorZoneAssist.Mode="PrimaryDark" Background="#CFDFFF">
-                        <Button  x:Name="btn_Overview" Click="Btn_chkinout_Click">
-                            <TextBlock Text="Overview"/>
-                        </Button>
-                        <Button x:Name="btn_cusReg" Click="Btn_cusReg_Click" >
-                            <TextBlock Text="Customer" />
-                        </Button>
-                        <Button x:Name="btn_reser" Click="Btn_reser_Click" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1" x:Name="Reser_data"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_reser" Click="Btn_reser_Click" Grid.Column="1" >
                             <TextBlock Text="Reservations" />
                         </Button>
-                        <Button x:Name="btn_reserCancel" Click="Btn_reserCancel_Click">
+                        <Button x:Name="btn_reserCancel" Click="Btn_reserCancel_Click" Grid.Column="3">
                             <TextBlock Text="Cancel Reservation" />
                         </Button>
-                        <Button x:Name="btn_Payrec" Click="Btn_Payrec_Click">
-                            <TextBlock Text="Make A Payment"/>
-                        </Button>
-                        <Button x:Name="btn_Reports" Click="Btn_Genrepos_Click">
-                            <TextBlock Text="Reports" />
-                        </Button>
-                    </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="view_other" Grid.Row="1">
+                    <TextBlock Text="Payments"/>
                 </Grid>
            </Grid>
             <Grid Grid.Row="3" Background="#ECECEC">

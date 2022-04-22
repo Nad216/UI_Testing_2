@@ -24,6 +24,33 @@ namespace UI_Testing_2
             con = new SqlConnection("Server=tcp:gad-hotelreser.database.windows.net,1433;Initial Catalog=Hotel_Reser;Persist Security Info=False;User ID=admin-hr;Password=Hotel@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
         }
+        
+        public string ReadData(string select_letter, string coloumn, string Table,int start_char, int MaxNum)
+        {
+            con.Open();
+            cmd = new SqlCommand("select '"+ select_letter + "'+ cast (max(cast(SUBSTRING( "+ coloumn + " ,"+ start_char + ", "+ MaxNum + " )as int))+1 as varchar) as " + coloumn + " from " + Table + "", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            string ClientId = "";
+            while (dr.Read())
+            {
+                if (dr[0].ToString() != "" || dr[0].ToString().Trim() != string.Empty)
+                {
+                    string id = dr[0].ToString();
+                    ClientId = id;
+                }
+                else
+                {
+                    ClientId = "RO00001";
+                }
+            }
+            if (dr.HasRows)
+            {
+                dr.Close();
+            }
+            con.Close();
+            return ClientId;
+        }
+
 
         public int Check_Login(string user, string pass)
         {

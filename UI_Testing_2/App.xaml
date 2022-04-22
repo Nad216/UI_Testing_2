@@ -4,7 +4,8 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:UI_Testing_2"
              xmlns:materialDesign="https://materialdesigninxaml.net/winfx/xaml/themes"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Reservation.xaml">
+    <!-- MainWindow.xaml-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

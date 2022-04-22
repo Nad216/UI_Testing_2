@@ -62,7 +62,7 @@
             <TextBlock Margin="5,2,5,2" Foreground="#D6D8F3" Grid.Column="1" Grid.Row="1" Text="User" VerticalAlignment="Center" FontWeight="Bold" FontSize="15" />
             <materialDesign:Chip x:Name="user_chip"  Margin="5,2,5,2" Grid.Column="2" Grid.Row="1" Content="name" FontSize="15" Foreground="#354875" Background="#F598D8"/>
             <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Cancel Reservations" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-            <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{x:Static s:DateTime.Now}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+            <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{Binding Source={StaticResource ticker}, Path=Full, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
             <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
                 <materialDesign:PackIcon Foreground="#ffaf00"  Kind="CloseBox" VerticalAlignment="Center" Width="30" Height="30" />
             </Button>            

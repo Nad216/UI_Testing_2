@@ -83,25 +83,25 @@ namespace UI_Testing_2
             {
                 Dashboard_Menu_change(true, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
-                Dashboard_Menu_change(false, view_other);
+                Dashboard_Menu_change(false, view_Payment);
             }
             else if (rd_Reser.IsChecked == true)
             { 
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(true, view_Reservation);
-                Dashboard_Menu_change(false, view_other);
+                Dashboard_Menu_change(false, view_Payment);
             }
             else if (rd_Payment.IsChecked == true)
             {
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
-                Dashboard_Menu_change(true, view_other);
+                Dashboard_Menu_change(true, view_Payment);
             }
             else
             {
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
-                Dashboard_Menu_change(false, view_other);
+                Dashboard_Menu_change(false, view_Payment);
             }
 
 

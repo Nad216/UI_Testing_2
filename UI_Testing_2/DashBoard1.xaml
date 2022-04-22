@@ -218,7 +218,7 @@
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid x:Name="view_other" Grid.Row="1">
+                <Grid x:Name="view_Payment" Grid.Row="1">
                     <TextBlock Text="Payments"/>
                 </Grid>
            </Grid>

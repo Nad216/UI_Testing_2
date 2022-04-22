@@ -54,13 +54,14 @@ namespace UI_Testing_2
 
         private void refresh()
         {
+            clear_room_data();
             reservation_id_txt.Text = log1.ReadData("RO", "Room_ID", "Room", 3, 10000);
             dt_a = log1.ConSelect("room_details");
             dt_a1 = log1.ConSelect("room_details_2");
 
         }
 
-        public void Visibility_UI(UIElement ui_ele, bool tf)
+        private void Visibility_UI(UIElement ui_ele, bool tf)
         {
             if (tf)
             ui_ele.Visibility = Visibility.Visible;
@@ -68,7 +69,7 @@ namespace UI_Testing_2
             ui_ele.Visibility = Visibility.Hidden;
         }
 
-        public void Visibility_combo(bool a, bool b, bool c, bool d, bool e)
+        private void Visibility_combo(bool a, bool b, bool c, bool d, bool e)
         {
             Visibility_UI(lbl_opt1, a);
             Visibility_UI(txt_room1_id, a);
@@ -100,7 +101,7 @@ namespace UI_Testing_2
             Visibility_UI(cmb_room5_cos_type, e);
             Visibility_UI(txt_floor_room5, e);
         }
-        public void Update_combo()
+        private void Update_combo()
         {
             cmb_room1_type.ItemsSource = dt_a.DefaultView;
             cmb_room1_type.DisplayMemberPath = "Room_Type";
@@ -116,6 +117,8 @@ namespace UI_Testing_2
 
             cmb_room5_type.ItemsSource = dt_a.DefaultView;
             cmb_room5_type.DisplayMemberPath = "Room_Type";
+
+            clear_room_data();
 
             if (cmb_cout_rooms.SelectedIndex == 1)
             {
@@ -144,6 +147,7 @@ namespace UI_Testing_2
         }
 
 
+
        private void Combo_Update_second(ItemsControl item,string a)
         {
             item.ItemsSource = dt_a1.DefaultView;
@@ -162,6 +166,31 @@ namespace UI_Testing_2
 
         private void Btn_calculate_Click(object sender, RoutedEventArgs e)
         {
+            DateTime cid = Convert.ToDateTime(cid_picker.Text);
+            DateTime cod = Convert.ToDateTime(cod_picker.Text);
+
+            no_of_days_txt.Text = ((cod.Date - cid.Date).Days).ToString();
+        }
+
+        private void clear_room_data()
+        {
+            txt_room1_id.Text = "";
+            txt_room2_id.Text = "";
+            txt_room3_id.Text = "";
+            txt_room4_id.Text = "";
+            txt_room5_id.Text = "";
+
+            cmb_room1_cos_type.SelectedIndex = -1;
+            cmb_room2_cos_type.SelectedIndex = -1;
+            cmb_room3_cos_type.SelectedIndex = -1;
+            cmb_room4_cos_type.SelectedIndex = -1;
+            cmb_room5_cos_type.SelectedIndex = -1;
+
+            cmb_room1_type.SelectedIndex = -1;
+            cmb_room2_type.SelectedIndex = -1;
+            cmb_room3_type.SelectedIndex = -1;
+            cmb_room4_type.SelectedIndex = -1;
+            cmb_room5_type.SelectedIndex = -1;
 
         }
 
@@ -207,6 +236,7 @@ namespace UI_Testing_2
             }
 
         }
+
         private void Cmb_room1_type_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (cmb_room1_type.SelectedIndex == -1)

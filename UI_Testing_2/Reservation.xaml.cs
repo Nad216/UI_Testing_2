@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Windows.Controls;
 
 namespace UI_Testing_2
 {
@@ -12,17 +12,52 @@ namespace UI_Testing_2
     public partial class Reservation : Window
     {
         DB_connetions log1 = new DB_connetions();
-        DataTable dt_a;
-        
+        DataTable dt_a; 
+        DataTable dt_a1; 
+
         public Reservation()
         {
+            dt_a = log1.ConSelect("room_details");
             InitializeComponent();
+            refresh();
+
+            Visibility_UI(lbl_opt1, false);
+            Visibility_UI(txt_room1_id, false);
+            Visibility_UI(cmb_room1_type, false);
+            Visibility_UI(cmb_room1_cos_type, false);
+            Visibility_UI(txt_floor_room1, false);
+
+            Visibility_UI(lbl_opt2, false);
+            Visibility_UI(txt_room2_id, false);
+            Visibility_UI(cmb_room2_type, false);
+            Visibility_UI(cmb_room2_cos_type, false);
+            Visibility_UI(txt_floor_room2, false);
+
+            Visibility_UI(lbl_opt3, false);
+            Visibility_UI(txt_room3_id, false);
+            Visibility_UI(cmb_room3_type, false);
+            Visibility_UI(cmb_room3_cos_type, false);
+            Visibility_UI(txt_floor_room3, false);
+
+            Visibility_UI(lbl_opt4, false);
+            Visibility_UI(txt_room4_id, false);
+            Visibility_UI(cmb_room4_type, false);
+            Visibility_UI(cmb_room4_cos_type, false);
+            Visibility_UI(txt_floor_room4, false);
+
+            Visibility_UI(lbl_opt5, false);
+            Visibility_UI(txt_room5_id, false);
+            Visibility_UI(cmb_room5_type, false);
+            Visibility_UI(cmb_room5_cos_type, false);
+            Visibility_UI(txt_floor_room5, false);
         }
 
         private void refresh()
         {
             reservation_id_txt.Text = log1.ReadData("RO", "Room_ID", "Room", 3, 10000);
             dt_a = log1.ConSelect("room_details");
+            dt_a1 = log1.ConSelect("room_details_2");
+
         }
 
         public void Visibility_UI(UIElement ui_ele, bool tf)
@@ -108,6 +143,13 @@ namespace UI_Testing_2
             }
         }
 
+
+       private void Combo_Update_second(ItemsControl item,string a)
+        {
+            item.ItemsSource = dt_a1.DefaultView;
+            item.DisplayMemberPath = a;            
+        }
+
         private void Btn_book_Click(object sender, RoutedEventArgs e)
         {
             //cmd = new SqlCommand("Insert into reservation_details values ('" + reservation_id_txt.Text + "', '" + cid_picker + "', '" + cod_picker + "' ,'" + client_name_txt.Text + "', '" + client_nic_txt.Text + "','" + client_address_txt.Text + "','" + client_mobile_txt.Text + "','" + client_email_txt.Text + "','" + special_note_txt.Text + "')", con);
@@ -120,7 +162,7 @@ namespace UI_Testing_2
 
         private void Btn_calculate_Click(object sender, RoutedEventArgs e)
         {
-        
+
         }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
@@ -128,36 +170,183 @@ namespace UI_Testing_2
             this.Close();
         }
 
-        private void Cmb_room1_type_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            //if (cmb_selectCID.SelectedIndex == -1)
-            //{
-            //    cmb_selectRoID.ItemsSource = null;
-            //}
-            //else
-            //{
-            //    //int i;
-            //    DataRow[] cli_row = dt_C_in.Select();
-            //    lbl_CL_ID1.Text = cli_row[0]["Client_ID"].ToString();
-            //    dt_select = log1.ConSelect("Reservation where C_ID = '" + lbl_CL_ID1.Text + "'");
-            //    cmb_selectRoID.ItemsSource = dt_select.DefaultView;
-            //    cmb_selectRoID.DisplayMemberPath = "Start_day";
-            //    if (dt_select.Rows.Count > 0)
-            //    {
-            //        lbl_duplicates.Text = "Check Duplicates";
-            //    }
-            //    else
-            //    {
-            //        lbl_duplicates.Text = "No";
-            //        cmb_selectRoID.SelectedIndex = 0;
-            //        lbl_Date_ID1.Text = dt_select.Rows[0]["Start_day"].ToString().Remove(10);
-            //    }
-            }
+        //if (cmb_selectCID.SelectedIndex == -1)
+        //{
+        //    cmb_selectRoID.ItemsSource = null;
+        //}
+        //else
+        //{
+        //    //int i;
+        //    DataRow[] cli_row = dt_C_in.Select();
+        //    lbl_CL_ID1.Text = cli_row[0]["Client_ID"].ToString();
+        //    dt_select = log1.ConSelect("Reservation where C_ID = '" + lbl_CL_ID1.Text + "'");
+        //    cmb_selectRoID.ItemsSource = dt_select.DefaultView;
+        //    cmb_selectRoID.DisplayMemberPath = "Start_day";
+        //    if (dt_select.Rows.Count > 0)
+        //    {
+        //        lbl_duplicates.Text = "Check Duplicates";
+        //    }
+        //    else
+        //    {
+        //        lbl_duplicates.Text = "No";
+        //        cmb_selectRoID.SelectedIndex = 0;
+        //        lbl_Date_ID1.Text = dt_select.Rows[0]["Start_day"].ToString().Remove(10);
+        //    }
+
+
 
         private void Cmb_cout_rooms_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            Update_combo();
+            if (cmb_cout_rooms.SelectedIndex == -1)
+            {
+
+            }
+            else
+            {
+                Update_combo();
+            }
+
         }
-    
+        private void Cmb_room1_type_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (cmb_room1_type.SelectedIndex == -1)
+            {
+
+            }
+            else if (cmb_room1_type.SelectedIndex == 0)
+            {
+                Combo_Update_second(cmb_room1_cos_type, "Single_r");
+            }
+            else if (cmb_room1_type.SelectedIndex == 1)
+            {
+                Combo_Update_second(cmb_room1_cos_type, "Double_r");
+            }
+            else if (cmb_room1_type.SelectedIndex == 2)
+            {
+                Combo_Update_second(cmb_room1_cos_type, "Triple_r");
+            }
+            else if (cmb_room1_type.SelectedIndex == 3)
+            {
+                Combo_Update_second(cmb_room1_cos_type, "Family_r");
+            }
+            else if (cmb_room1_type.SelectedIndex == 4)
+            {
+                Combo_Update_second(cmb_room1_cos_type, "Kings_r");
+            }
+        }
+
+        private void Cmb_room2_type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmb_room2_type.SelectedIndex == -1)
+            {
+
+            }
+            else if (cmb_room2_type.SelectedIndex == 0)
+            {
+                Combo_Update_second(cmb_room2_cos_type, "Single_r");
+            }
+            else if (cmb_room2_type.SelectedIndex == 1)
+            {
+                Combo_Update_second(cmb_room2_cos_type, "Double_r");
+            }
+            else if (cmb_room2_type.SelectedIndex == 2)
+            {
+                Combo_Update_second(cmb_room2_cos_type, "Triple_r");
+            }
+            else if (cmb_room2_type.SelectedIndex == 3)
+            {
+                Combo_Update_second(cmb_room2_cos_type, "Family_r");
+            }
+            else if (cmb_room2_type.SelectedIndex == 4)
+            {
+                Combo_Update_second(cmb_room2_cos_type, "Kings_r");
+            }
+        }
+
+        private void Cmb_room3_type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmb_room3_type.SelectedIndex == -1)
+            {
+
+            }
+            else if (cmb_room3_type.SelectedIndex == 0)
+            {
+                Combo_Update_second(cmb_room3_cos_type, "Single_r");
+            }
+            else if (cmb_room3_type.SelectedIndex == 1)
+            {
+                Combo_Update_second(cmb_room3_cos_type, "Double_r");
+            }
+            else if (cmb_room3_type.SelectedIndex == 2)
+            {
+                Combo_Update_second(cmb_room3_cos_type, "Triple_r");
+            }
+            else if (cmb_room3_type.SelectedIndex == 3)
+            {
+                Combo_Update_second(cmb_room3_cos_type, "Family_r");
+            }
+            else if (cmb_room3_type.SelectedIndex == 4)
+            {
+                Combo_Update_second(cmb_room3_cos_type, "Kings_r");
+            }
+        }
+
+        private void Cmb_room4_type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (cmb_room4_type.SelectedIndex == -1)
+            {
+
+            }
+            else if (cmb_room4_type.SelectedIndex == 0)
+            {
+                Combo_Update_second(cmb_room4_cos_type, "Single_r");
+            }
+            else if (cmb_room4_type.SelectedIndex == 1)
+            {
+                Combo_Update_second(cmb_room4_cos_type, "Double_r");
+            }
+            else if (cmb_room4_type.SelectedIndex == 2)
+            {
+                Combo_Update_second(cmb_room4_cos_type, "Triple_r");
+            }
+            else if (cmb_room4_type.SelectedIndex == 3)
+            {
+                Combo_Update_second(cmb_room4_cos_type, "Family_r");
+            }
+            else if (cmb_room4_type.SelectedIndex == 4)
+            {
+                Combo_Update_second(cmb_room4_cos_type, "Kings_r");
+            }
+        }
+
+        private void Cmb_room5_type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (cmb_room5_type.SelectedIndex == -1)
+            {
+
+            }
+            else if (cmb_room5_type.SelectedIndex == 0)
+            {
+                Combo_Update_second(cmb_room5_cos_type, "Single_r");
+            }
+            else if (cmb_room5_type.SelectedIndex == 1)
+            {
+                Combo_Update_second(cmb_room5_cos_type, "Double_r");
+            }
+            else if (cmb_room5_type.SelectedIndex == 2)
+            {
+                Combo_Update_second(cmb_room5_cos_type, "Triple_r");
+            }
+            else if (cmb_room5_type.SelectedIndex == 3)
+            {
+                Combo_Update_second(cmb_room5_cos_type, "Family_r");
+            }
+            else if (cmb_room5_type.SelectedIndex == 4)
+            {
+                Combo_Update_second(cmb_room5_cos_type, "Kings_r");
+            }
+        }
     }
 }

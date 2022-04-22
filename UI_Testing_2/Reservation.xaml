@@ -43,7 +43,7 @@
         <materialDesign:Chip x:Name="user_chip"  Margin="5,2,5,2" Grid.Column="2" Grid.Row="1" Content="name" FontSize="15" Foreground="#354875" Background="#F598D8"/>
         <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Reservation" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
         <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{Binding Source={StaticResource ticker}, Path=Full, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="">
+        <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1">
             <materialDesign:PackIcon Foreground="#ffaf00"  Kind="CloseBox" VerticalAlignment="Center" Width="30" Height="30" />
         </Button>
     </Grid>
@@ -97,7 +97,7 @@
                 <TextBox  Name="txt_room4_id" FontSize="8" FontWeight="Bold" Margin="1,2" Grid.Column="1" Grid.Row="8">Room ID</TextBox>
                 <TextBox  Name="txt_room5_id" FontSize="8" FontWeight="Bold" Margin="1,2" Grid.Column="1" Grid.Row="9">Room ID</TextBox>
 
-                    <ComboBox Name="cmb_cout_rooms" Margin="1,2" SelectedIndex="0"  FontSize="8" FontWeight="Bold" Grid.Column="1" Grid.Row="4" materialDesign:HintAssist.Hint="Select No of Rooms" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="Cmb_cout_rooms_SelectionChanged">
+                    <ComboBox Name="cmb_cout_rooms" Margin="1,2"  FontSize="8" FontWeight="Bold" Grid.Column="1" Grid.Row="4" materialDesign:HintAssist.Hint="Select No of Rooms" ItemsSource="{Binding LongListToTestComboVirtualization}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="Cmb_cout_rooms_SelectionChanged">
                         <ComboBoxItem Content="0"/>
                         <ComboBoxItem Content="1"/>
                         <ComboBoxItem Content="2"/>
@@ -106,17 +106,17 @@
                         <ComboBoxItem Content="5"/>
                     </ComboBox>
 
-                    <ComboBox Name="cmb_room1_type" Margin="1,2" SelectedIndex="0"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="5" SelectionChanged="Cmb_room1_type_SelectionChanged" />
-                    <ComboBox Name="cmb_room2_type" Margin="1,2" SelectedIndex="0"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="6" />
-                    <ComboBox Name="cmb_room3_type" Margin="1,2" SelectedIndex="0"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="7" />
-                    <ComboBox Name="cmb_room4_type" Margin="1,2" SelectedIndex="0"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="8" />
-                    <ComboBox Name="cmb_room5_type" Margin="1,2" SelectedIndex="0"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="9" />
+                    <ComboBox Name="cmb_room1_type" Margin="1,2"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="5" SelectionChanged="Cmb_room1_type_SelectionChanged" />
+                    <ComboBox Name="cmb_room2_type" Margin="1,2"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="6" SelectionChanged="Cmb_room2_type_SelectionChanged" />
+                    <ComboBox Name="cmb_room3_type" Margin="1,2"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="7" SelectionChanged="Cmb_room3_type_SelectionChanged" />
+                    <ComboBox Name="cmb_room4_type" Margin="1,2"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="8" SelectionChanged="Cmb_room4_type_SelectionChanged" />
+                    <ComboBox Name="cmb_room5_type" Margin="1,2"  FontSize="8" FontWeight="Bold" Grid.Column="2" Grid.Row="9" SelectionChanged="Cmb_room5_type_SelectionChanged" />
 
-                    <ComboBox Name="cmb_room1_cos_type" Margin="1,2" SelectedIndex="0"  FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="5" />
-                    <ComboBox Name="cmb_room2_cos_type"  Margin="1,2" SelectedIndex="0" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="6" />
-                    <ComboBox Name="cmb_room3_cos_type" Margin="1,2"  SelectedIndex="0" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="7" />
-                    <ComboBox Name="cmb_room4_cos_type" Margin="1,2"  SelectedIndex="0" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="8" />
-                    <ComboBox Name="cmb_room5_cos_type" Margin="1,2"  SelectedIndex="0" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="9" />
+                    <ComboBox Name="cmb_room1_cos_type" Margin="1,2"  FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="5" />
+                    <ComboBox Name="cmb_room2_cos_type"  Margin="1,2" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="6" />
+                    <ComboBox Name="cmb_room3_cos_type" Margin="1,2" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="7" />
+                    <ComboBox Name="cmb_room4_cos_type" Margin="1,2" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="8" />
+                    <ComboBox Name="cmb_room5_cos_type" Margin="1,2" FontSize="8" FontWeight="Bold" Grid.Column="3" Grid.Row="9" />
 
 
                 <TextBox  Name="txt_floor_room1" FontSize="8" FontWeight="Bold" Margin="1,2" Grid.Column="4" Grid.Row="5">Floor</TextBox>

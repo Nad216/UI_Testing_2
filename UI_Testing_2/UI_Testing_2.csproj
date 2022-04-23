@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Client_form.xaml.cs">
+      <DependentUpon>Client_form.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reservation.xaml.cs">
       <DependentUpon>Reservation.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,10 @@
     <Page Include="CancelReserve.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Client_form.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="DashBoard1.xaml">
       <SubType>Designer</SubType>

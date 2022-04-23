@@ -90,7 +90,7 @@
                     </Grid>
                 </RadioButton.Content>
             </RadioButton>
-            <RadioButton Style="{StaticResource MenuButton}">
+            <RadioButton x:Name="rd_cust" Style="{StaticResource MenuButton}">
                 <RadioButton.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -101,11 +101,11 @@
                             <ColumnDefinition Width="10"/>
                         </Grid.ColumnDefinitions>
                         <materialDesign:PackIcon Grid.Column="1" Kind="Account" VerticalAlignment="Center" Height="30" Width="30" />
-                        <TextBlock Grid.Column="3" Text="Name" FontSize="20"/>
+                        <TextBlock Grid.Column="3" Text="Customers" FontSize="20"/>
                     </Grid>
                 </RadioButton.Content>
             </RadioButton>
-            <RadioButton Style="{StaticResource MenuButton}">
+            <RadioButton x:Name="rd_rooms" Style="{StaticResource MenuButton}">
                 <RadioButton.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -115,8 +115,8 @@
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="10"/>
                         </Grid.ColumnDefinitions>
-                        <materialDesign:PackIcon Grid.Column="1" Kind="Account" VerticalAlignment="Center" Height="30" Width="30" />
-                        <TextBlock Grid.Column="3" Text="Name" FontSize="20"/>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="Bed" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Grid.Column="3" Text="Rooms" FontSize="20"/>
                     </Grid>
                 </RadioButton.Content>
             </RadioButton>
@@ -192,7 +192,7 @@
                 <RowDefinition Height="0"/>
             </Grid.RowDefinitions>
                 <Grid x:Name="view_Overview" Grid.Row="1">
-                    <TextBlock Text="Overview" FontSize="50"/>
+                    <TextBlock Text="Welcome To Royal Hotel" FontSize="50" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid x:Name="view_Reservation" Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -219,9 +219,60 @@
                     </Grid>
                 </Grid>
                 <Grid x:Name="view_Payment" Grid.Row="1">
-                    <TextBlock Text="Payments"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1" x:Name="Pay_data"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_Payment" Click="Btn_reser_Click" Grid.Column="1" >
+                            <TextBlock Text="Payments" />
+                        </Button>
+                    </Grid>
                 </Grid>
-           </Grid>
+                <Grid x:Name="view_customers" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1" x:Name="cust_data"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_cusreg" Click="Btn_cusReg_Click" Grid.Column="1" >
+                            <TextBlock Text="Customer Registering" />
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="view_room" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1" x:Name="room_data"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </Grid>
+            </Grid>
             <Grid Grid.Row="3" Background="#ECECEC">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5"/>

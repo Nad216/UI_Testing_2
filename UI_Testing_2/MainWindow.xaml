@@ -34,7 +34,7 @@
         
         <Border Background="#00073c" BorderBrush="#603f00" BorderThickness="2" CornerRadius="12,12,12,12" Margin="1,0,-1,0"/>
         <Label FontSize="40" Content="Login" Margin="350,20,113,270" HorizontalAlignment="Center" Height="70" FontWeight="Bold" Foreground="#d09714"/>
-        <Image Source="C:\Users\Nadun Avishka\Documents\GAD Project\Testing\Logo.png" Margin="120,20,260,260"/>
+        <Image Source="Elements\Logo.png" Margin="120,20,260,260"/>
         <Border BorderBrush="#603f00" BorderThickness="2" Margin="30,100,30,90"></Border>
         <Label Foreground="#d09714"  FontWeight="Bold" FontSize="22" Content="User Name" Margin="71,130,389,180"/>
         <TextBox materialDesign:HintAssist.HelperText="" materialDesign:HintAssist.Hint="Type Username" Background="AliceBlue" Foreground="#777777" Name ="txt_username"  FontWeight="Bold" FontSize="20" Margin="260,132,90,182" TextChanged="Txt_username_TextChanged" />

@@ -15,7 +15,7 @@ namespace UI_Testing_2
     {
         DB_connetions log1 = new DB_connetions();
         Color_codes ccg = new Color_codes();
-        DataTable dt_a; 
+        DataTable dt_a;
         DataTable dt_a1;
 
 
@@ -110,9 +110,9 @@ namespace UI_Testing_2
         private void Visibility_UI(UIElement ui_ele, bool tf)
         {
             if (tf)
-            ui_ele.Visibility = Visibility.Visible;
+                ui_ele.Visibility = Visibility.Visible;
             else
-            ui_ele.Visibility = Visibility.Hidden;
+                ui_ele.Visibility = Visibility.Hidden;
         }
 
         private void Visibility_combo(bool a, bool b, bool c, bool d, bool e)
@@ -194,10 +194,10 @@ namespace UI_Testing_2
 
 
 
-       private void Combo_Update_second(ItemsControl item,string a)
+        private void Combo_Update_second(ItemsControl item, string a)
         {
             item.ItemsSource = dt_a1.DefaultView;
-            item.DisplayMemberPath = a;            
+            item.DisplayMemberPath = a;
         }
 
         private void Btn_book_Click(object sender, RoutedEventArgs e)
@@ -248,7 +248,7 @@ namespace UI_Testing_2
                 }
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Error_msg("There is an error. Please contact your sytem adminstrator");
             }
@@ -266,110 +266,110 @@ namespace UI_Testing_2
                 Error_msg("Select Meal type");
             }
             else if (room_type == 0)
+            {
+                switch (meal_type)
                 {
-                    switch (meal_type)
-                    {
-                        case 0:
-                            value = 10000;
-                            break;
-                        case 1:
-                            value = 11000;
-                            break;
-                        case 2:
-                            value = 13500;
-                            break;
-                        case 3:
-                            value = 17500;
-                            break;
-                        default:
-                            value = 0;
-                            break;
-                    }
+                    case 0:
+                        value = 10000;
+                        break;
+                    case 1:
+                        value = 11000;
+                        break;
+                    case 2:
+                        value = 13500;
+                        break;
+                    case 3:
+                        value = 17500;
+                        break;
+                    default:
+                        value = 0;
+                        break;
                 }
+            }
             else if (room_type == 1)
+            {
+                switch (meal_type)
                 {
-                    switch (meal_type)
-                    {
-                        case 0:
-                            value = 15000;
-                            break;
-                        case 1:
-                            value = 18000;
-                            break;
-                        case 2:
-                            value = 22000;
-                            break;
-                        case 3:
-                            value = 30000;
-                            break;
-                        default:
-                            value = 0;
-                            break;
-                    }
+                    case 0:
+                        value = 15000;
+                        break;
+                    case 1:
+                        value = 18000;
+                        break;
+                    case 2:
+                        value = 22000;
+                        break;
+                    case 3:
+                        value = 30000;
+                        break;
+                    default:
+                        value = 0;
+                        break;
                 }
+            }
             else if (room_type == 2)
+            {
+                switch (meal_type)
                 {
-                    switch (meal_type)
-                    {
-                        case 0:
-                            value = 20000;
-                            break;
-                        case 1:
-                            value = 23000;
-                            break;
-                        case 2:
-                            value = 30500;
-                            break;
-                        case 3:
-                            value = 42500;
-                            break;
-                        default:
-                            value = 0;
-                            break;
-                    }
+                    case 0:
+                        value = 20000;
+                        break;
+                    case 1:
+                        value = 23000;
+                        break;
+                    case 2:
+                        value = 30500;
+                        break;
+                    case 3:
+                        value = 42500;
+                        break;
+                    default:
+                        value = 0;
+                        break;
                 }
+            }
             else if (room_type == 3)
+            {
+                switch (meal_type)
                 {
-                    switch (meal_type)
-                    {
-                        case 0:
-                            value = 25000;
-                            break;
-                        case 1:
-                            value = 29000;
-                            break;
-                        case 2:
-                            value = 39000;
-                            break;
-                        case 3:
-                            value = 55000;
-                            break;
-                        default:
-                            value = 0;
-                            break;
-                    }
+                    case 0:
+                        value = 25000;
+                        break;
+                    case 1:
+                        value = 29000;
+                        break;
+                    case 2:
+                        value = 39000;
+                        break;
+                    case 3:
+                        value = 55000;
+                        break;
+                    default:
+                        value = 0;
+                        break;
                 }
+            }
             else if (room_type == 4)
+            {
+                switch (meal_type)
                 {
-                    switch (meal_type)
-                    {
-                        case 0:
-                            value = 30000;
-                            break;
-                        case 1:
-                            value = 33000;
-                            break;
-                        case 2:
-                            value = 40500;
-                            break;
-                        case 3:
-                            value = 52500;
-                            break;
-                        default:
-                            value = 0;
-                            break;
-                    }                    
+                    case 0:
+                        value = 30000;
+                        break;
+                    case 1:
+                        value = 33000;
+                        break;
+                    case 2:
+                        value = 40500;
+                        break;
+                    case 3:
+                        value = 52500;
+                        break;
+                    default:
+                        value = 0;
+                        break;
                 }
+            }
             else
             {
                 value = 0;
@@ -406,45 +406,62 @@ namespace UI_Testing_2
 
         private void Btn_calculate_Click(object sender, RoutedEventArgs e)
         {
-            DateTime cid = Convert.ToDateTime(cid_picker.Text);
-            DateTime cod = Convert.ToDateTime(cod_picker.Text);
+            try
+            {
+                DateTime cid = Convert.ToDateTime(cid_picker.Text);
+                DateTime cod = Convert.ToDateTime(cod_picker.Text);
 
-            no_of_days_txt.Text = ((cod.Date - cid.Date).Days).ToString();
-            if (cmb_cout_rooms.SelectedIndex == -1 || cmb_cout_rooms.SelectedIndex == 0)
-            {
-                number_of_guests_txt.Text = "0";
-                price_per_night_txt.Text = "0";
+                no_of_days_txt.Text = ((cod.Date - cid.Date).Days).ToString();
+                if (cmb_cout_rooms.SelectedIndex == -1 || cmb_cout_rooms.SelectedIndex == 0)
+                {
+                    number_of_guests_txt.Text = "0";
+                    price_per_night_txt.Text = "0";
+                }
+                else if (cmb_cout_rooms.SelectedIndex == 1)
+                {
+                    price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex));
+                    number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex));
+                }
+                else if (cmb_cout_rooms.SelectedIndex == 2)
+                {
+                    price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex));
+                    number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex));
+                }
+                else if (cmb_cout_rooms.SelectedIndex == 3)
+                {
+                    price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex));
+                    number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex));
+                }
+                else if (cmb_cout_rooms.SelectedIndex == 4)
+                {
+                    price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room4_type.SelectedIndex, cmb_room4_cos_type.SelectedIndex));
+                    number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex) + no_of_guest(cmb_room4_type.SelectedIndex));
+                }
+                else if (cmb_cout_rooms.SelectedIndex == 5)
+                {
+                    price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room4_type.SelectedIndex, cmb_room4_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room5_type.SelectedIndex, cmb_room5_cos_type.SelectedIndex));
+                    number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex) + no_of_guest(cmb_room4_type.SelectedIndex) + no_of_guest(cmb_room5_type.SelectedIndex));
+                }
+                else
+                {
+                    number_of_guests_txt.Text = "0";
+                }
+                if (number_of_guests_txt.Text == "0" || price_per_night_txt.Text == "0")
+                {
+                    sub_total_txt.Text = "0";
+                }
+                else
+                {
+                    sub_total_txt.Text = (Convert.ToDouble(number_of_guests_txt.Text) * Convert.ToDouble(number_of_guests_txt.Text)).ToString();
+                    tax_txt.Text = (Convert.ToDouble(sub_total_txt.Text) * 0.1).ToString();
+                    total_txt.Text = (Convert.ToDouble(sub_total_txt.Text) * 1.1).ToString();
+                }
+
             }
-            else if (cmb_cout_rooms.SelectedIndex == 1)
+            catch (Exception)
             {
-                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex));
-                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex));
+                Error_msg("Plaese Check Again");
             }
-            else if (cmb_cout_rooms.SelectedIndex == 2)
-            {
-                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex));
-                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex));
-            }
-            else if (cmb_cout_rooms.SelectedIndex == 3)
-            {
-                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex));
-                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex));
-            }
-            else if (cmb_cout_rooms.SelectedIndex == 4)
-            {
-                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room4_type.SelectedIndex, cmb_room4_cos_type.SelectedIndex));
-                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex) + no_of_guest(cmb_room4_type.SelectedIndex));
-            }
-            else if (cmb_cout_rooms.SelectedIndex == 5)
-            {
-                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room4_type.SelectedIndex, cmb_room4_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room5_type.SelectedIndex, cmb_room5_cos_type.SelectedIndex));
-                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex) + no_of_guest(cmb_room4_type.SelectedIndex) + no_of_guest(cmb_room5_type.SelectedIndex));
-            }
-            else
-            {
-                number_of_guests_txt.Text = "0";
-            }
-            
         }
 
         private void clear_room_data()
@@ -472,7 +489,7 @@ namespace UI_Testing_2
         private void Btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }            
+        }
 
         private void Cmb_cout_rooms_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -628,5 +645,6 @@ namespace UI_Testing_2
                 Combo_Update_second(cmb_room5_cos_type, "Kings_r");
             }
         }
+
     }
 }

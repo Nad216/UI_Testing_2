@@ -23,6 +23,7 @@ namespace UI_Testing_2
         DB_connetions log1 = new DB_connetions();
         Color_codes ccg = new Color_codes();
         DataTable dt_Reser = new DataTable();
+        DataTable dt_Pay = new DataTable();
 
         public DashBoard1()
         {
@@ -33,8 +34,12 @@ namespace UI_Testing_2
 
         public void Refresh()
         {
+            //Reservation Data load
             dt_Reser = log1.ConSelect("Reservation");
             Reser_data.ItemsSource = dt_Reser.DefaultView;
+            //Payment Data load
+            dt_Pay = log1.ConSelect("Payment");
+            Pay_data.ItemsSource = dt_Pay.DefaultView;
         }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
@@ -45,11 +50,15 @@ namespace UI_Testing_2
         private void Btn_cusReg_Click(object sender, RoutedEventArgs e)
         {
             //Yashoda's WPF Form ADD to Here
+            Client_form obj_cli = new Client_form();
+            obj_cli.ShowDialog();
         }
 
         private void Btn_reser_Click(object sender, RoutedEventArgs e)
         {
             //Lakshan's WPF Form ADD to Here
+            Reservation obj_res = new Reservation();
+            obj_res.ShowDialog();
         }
 
         private void Btn_reserCancel_Click(object sender, RoutedEventArgs e)
@@ -84,24 +93,48 @@ namespace UI_Testing_2
                 Dashboard_Menu_change(true, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
                 Dashboard_Menu_change(false, view_Payment);
+                Dashboard_Menu_change(false, view_customers);
+                Dashboard_Menu_change(false, view_room);
             }
             else if (rd_Reser.IsChecked == true)
             { 
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(true, view_Reservation);
                 Dashboard_Menu_change(false, view_Payment);
+                Dashboard_Menu_change(false, view_customers);
+                Dashboard_Menu_change(false, view_room);
             }
             else if (rd_Payment.IsChecked == true)
             {
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
                 Dashboard_Menu_change(true, view_Payment);
+                Dashboard_Menu_change(false, view_customers);
+                Dashboard_Menu_change(false, view_room);
+            }
+            else if (rd_cust.IsChecked == true)
+            {
+                Dashboard_Menu_change(false, view_Overview);
+                Dashboard_Menu_change(false, view_Reservation);
+                Dashboard_Menu_change(false, view_Payment);
+                Dashboard_Menu_change(true, view_customers);
+                Dashboard_Menu_change(false, view_room);
+            }
+            else if (rd_rooms.IsChecked == true)
+            {
+                Dashboard_Menu_change(false, view_Overview);
+                Dashboard_Menu_change(false, view_Reservation);
+                Dashboard_Menu_change(false, view_Payment);
+                Dashboard_Menu_change(false, view_customers);
+                Dashboard_Menu_change(true, view_room);
             }
             else
             {
                 Dashboard_Menu_change(false, view_Overview);
                 Dashboard_Menu_change(false, view_Reservation);
                 Dashboard_Menu_change(false, view_Payment);
+                Dashboard_Menu_change(false, view_customers);
+                Dashboard_Menu_change(false, view_room);
             }
 
 

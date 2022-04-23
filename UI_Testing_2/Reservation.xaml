@@ -62,7 +62,7 @@
         <materialDesign:Chip x:Name="user_chip"  Margin="5,2,5,2" Grid.Column="2" Grid.Row="1" Content="name" FontSize="15" Foreground="#354875" Background="#F598D8"/>
         <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Reservation" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
         <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{Binding Source={StaticResource ticker}, Path=Full, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1">
+        <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
             <materialDesign:PackIcon Foreground="#ffaf00"  Kind="CloseBox" VerticalAlignment="Center" Width="30" Height="30" />
         </Button>
     </Grid>
@@ -166,7 +166,7 @@
         </Grid>
 
         <!--Payment Details-->
-        <Grid >
+        <Grid Background="#D9CEE9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="160"></ColumnDefinition>
                 <ColumnDefinition Width="160"></ColumnDefinition>
@@ -197,11 +197,11 @@
             <TextBox  Name="total_txt" FontSize="8" FontWeight="Bold" Margin="5,8" Grid.Column="3" Grid.Row="2"></TextBox>
             
             <!--Book Now Button-->
-            <Button Background="YellowGreen" x:Name="btn_book" Margin="0.5,0.5" FontSize="14" FontWeight="Bold" Height="40" Width="160" Grid.Row="3" Grid.Column="3" Content="Book Now" Click="Btn_book_Click" >
+            <Button  x:Name="btn_book" Margin="0.5,0.5" FontSize="14" FontWeight="Bold" Height="40" Width="160" Grid.Row="3" Grid.Column="3" Content="Book Now" Click="Btn_book_Click" >
             </Button>
 
             <!--Calculate Button-->
-            <Button Background="YellowGreen" x:Name="btn_calculate" Margin="0.5,0.5" FontSize="14" FontWeight="Bold" Height="40" Width="160" Grid.Row="3" Grid.Column="1" Content="Calculate" Click="Btn_calculate_Click"  >
+            <Button x:Name="btn_calculate" Margin="0.5,0.5" FontSize="14" FontWeight="Bold" Height="40" Width="160" Grid.Row="3" Grid.Column="1" Content="Calculate" Click="Btn_calculate_Click"  >
             </Button>
 
         </Grid>

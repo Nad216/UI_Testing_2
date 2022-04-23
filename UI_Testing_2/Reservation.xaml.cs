@@ -157,41 +157,56 @@ namespace UI_Testing_2
 
         private void Btn_book_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(client_name_txt.Text))
+            try
             {
-                MessageBox.Show("Client Name cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
-                client_name_txt.Focus();
-            }
-            else if (client_name_txt.Text.Any(char.IsDigit))
-            {
-                MessageBox.Show("Client name cannot have numbers.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
-                client_name_txt.Focus();
-            }
-            else if (String.IsNullOrEmpty(client_name_txt.Text))
-            {
-                MessageBox.Show("NIC cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
-                client_nic_txt.Focus();
-            }
-            else if (!Regex.IsMatch(client_mobile_txt.Text, @"^(?:7|0|(?:\+94))[0-9]{9,10}$"))
-            {
-                MessageBox.Show("Please input a valid Mobile Number", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
-                client_mobile_txt.Focus();
-            }
-            else if (client_email_txt.Text != null)
-            {
-                if (!Regex.IsMatch(client_email_txt.Text, @"^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"))
+                if (String.IsNullOrEmpty(client_name_txt.Text))
+                {
+                    MessageBox.Show("Client Name cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    client_name_txt.Focus();
+                }
+                else if (client_name_txt.Text.Any(char.IsDigit))
+                {
+                    MessageBox.Show("Client name cannot have numbers.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    client_name_txt.Focus();
+                }
+                else if (String.IsNullOrEmpty(client_name_txt.Text))
+                {
+                    MessageBox.Show("NIC cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    client_nic_txt.Focus();
+                }
+                else if (!Regex.IsMatch(client_mobile_txt.Text, @"^(?:7|0|(?:\+94))[0-9]{9,10}$"))
+                {
+                    MessageBox.Show("Please input a valid Mobile Number", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    client_mobile_txt.Focus();
+                }
+                else if ((client_email_txt.Text != "") & (!Regex.IsMatch(client_email_txt.Text, @"^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")))
                 {
                     MessageBox.Show("Please input a valid email. Ex:- name20@gmail.com", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
                     client_email_txt.Focus();
                 }
+                else if (!Regex.IsMatch(client_nic_txt.Text, @"^([0-9]{9}[x|X|v|V]|[0-9]{12})$"))
+                {
+                    MessageBox.Show("Please input a valid nic Number. ", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    client_nic_txt.Focus();
+                }
+                else if (cmb_cout_rooms.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Room Count cannot be empty.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else if ((cid_picker.Text == "") || (cod_picker.Text == ""))
+                {
+                    MessageBox.Show("Check in date and check out date cannot be empty.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else if (Convert.ToDateTime(cid_picker.Text) > Convert.ToDateTime(cod_picker.Text))
+                {
+                    MessageBox.Show("Check in date cannot be higher than checkout date.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
             }
-            else if (cmb_cout_rooms.SelectedIndex == 0)
+            catch(FormatException)
             {
-                MessageBox.Show("Room Count cannot be empty." , "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Check in/Out cannot be empty.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
-
-
         }
 
 

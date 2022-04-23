@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using MaterialDesignThemes.Wpf;
 
 namespace UI_Testing_2
 {
@@ -23,6 +24,48 @@ namespace UI_Testing_2
     {
         DB_connetions log1 = new DB_connetions();
         Color_codes ccg = new Color_codes();
+
+
+        public void Error_msg(string msg)
+        {
+            try
+            {
+                msg_txt.Text = msg;
+                msg_icon.Kind = PackIconKind.AlertCircle;
+                msg_icon.Foreground = ccg.cd_fill("#FF0000");
+                msg_ok.Background = ccg.cd_fill("#FF0000");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#FF0000");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void Information_msg(string msg)
+        {
+            try
+            {
+                msg_txt.Text = msg;
+                msg_icon.Kind = PackIconKind.InformationOutline;
+                msg_icon.Foreground = ccg.cd_fill("#193CFF");
+                msg_ok.Background = ccg.cd_fill("#197EFF");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#193CFF");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void Msg_ok_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.IsOpen = false;
+        }
 
         public Payment()
 

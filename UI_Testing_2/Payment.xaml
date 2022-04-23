@@ -18,7 +18,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -69,7 +69,7 @@
                 <materialDesign:Chip x:Name="user_chip"  Margin="5,2,5,2" Grid.Column="2" Grid.Row="1" Content="name" FontSize="15" Foreground="#354875" Background="#F598D8"/>
                 <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Payments" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
                 <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{Binding Source={StaticResource ticker}, Path=Full, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
+                <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1">
                     <materialDesign:PackIcon Foreground="#ffaf00"  Kind="CloseBox" VerticalAlignment="Center" Width="30" Height="30" />
                 </Button>
             </Grid>
@@ -99,17 +99,11 @@
         <TextBox x:Name="txt_total_payment" HorizontalAlignment="Left" Height="25" Margin="389,273.2,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" FontSize="16"/>
         <Label Content="Payment Date" HorizontalAlignment="Left" Margin="70,112.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" FontWeight="Bold" FontSize="16"/>
         <DatePicker x:Name="payment_picker" HorizontalAlignment="Left" Margin="389,112.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="226" FontSize="16" Height="32"/>
-        <Button Content="Print Invoice" HorizontalAlignment="Left" Margin="413,378.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="113" Height="33" FontWeight="Bold" FontSize="16">
-            
+        <Button x:Name="Save_Btn" Content="Save" HorizontalAlignment="Left" Margin="230,377,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110" Height="33" FontWeight="Bold" FontSize="16" Click="Save_Btn_Click">
+
         </Button>
-        <Button x:Name="Save_Btn" Content="Save" HorizontalAlignment="Left" Margin="42,378.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="33" FontWeight="Bold" FontSize="16" Click="Save_Btn_Click">
-            
-        </Button>
-        <Button Content="Generate Invoice" HorizontalAlignment="Left" Margin="615,377.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="143" Height="34" FontWeight="Bold" FontSize="16">
-            
-        </Button>
-        <Button x:Name="Cal_Btn" Content="Calculate" HorizontalAlignment="Left" Margin="224,378.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Height="33" FontWeight="Bold" FontSize="16">
-            
+        <Button x:Name="Cal_Btn" Content="Calculate" HorizontalAlignment="Left" Margin="402,377,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" Height="33" FontWeight="Bold" FontSize="16">
+
         </Button>
     </Grid>
 </Window>

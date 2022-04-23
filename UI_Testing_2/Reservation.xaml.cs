@@ -30,6 +30,8 @@ namespace UI_Testing_2
                 msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
                 msg_txt.Foreground = ccg.cd_fill("#FF0000");
 
+                DialogHost.IsOpen = true;
+
             }
             catch (Exception)
             {
@@ -47,6 +49,7 @@ namespace UI_Testing_2
                 msg_ok.Background = ccg.cd_fill("#197EFF");
                 msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
                 msg_txt.Foreground = ccg.cd_fill("#193CFF");
+                DialogHost.IsOpen = true;
             }
             catch (Exception)
             {
@@ -101,7 +104,7 @@ namespace UI_Testing_2
         private void refresh()
         {
             clear_room_data();
-            reservation_id_txt.Text = log1.ReadData("RO", "Room_ID", "Room", 3, 10000);
+            reservation_id_txt.Text = log1.ReadData("RE", "Room_ID", "Reservation", 3, 10000);
             dt_a = log1.ConSelect("room_details");
             dt_a1 = log1.ConSelect("room_details_2");
 
@@ -452,7 +455,7 @@ namespace UI_Testing_2
                 }
                 else
                 {
-                    sub_total_txt.Text = (Convert.ToDouble(number_of_guests_txt.Text) * Convert.ToDouble(number_of_guests_txt.Text)).ToString();
+                    sub_total_txt.Text = (Convert.ToDouble(no_of_days_txt.Text) * Convert.ToDouble(price_per_night_txt.Text)).ToString();
                     tax_txt.Text = (Convert.ToDouble(sub_total_txt.Text) * 0.1).ToString();
                     total_txt.Text = (Convert.ToDouble(sub_total_txt.Text) * 1.1).ToString();
                 }

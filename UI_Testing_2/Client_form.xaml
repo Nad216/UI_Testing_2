@@ -97,9 +97,6 @@
                         <ColumnDefinition Width="15" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0" x:Name="txt_city" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="city"/>
-                <TextBox Grid.Column="2" x:Name="txt_province" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="State/Province"/>
-                <TextBox Grid.Column="4" x:Name="txt_zip" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="Postal/Zip Code"/>
                 </Grid>
             </Grid>
             <Grid Margin="5,0,5,0" Grid.Row="3">

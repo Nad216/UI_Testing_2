@@ -24,12 +24,15 @@ namespace UI_Testing_2
         Color_codes ccg = new Color_codes();
         DataTable dt_Reser = new DataTable();
         DataTable dt_Pay = new DataTable();
+        DataTable dt_room = new DataTable();
+        DataTable dt_cust = new DataTable();
 
         public DashBoard1()
         {
             InitializeComponent();
             user_chip.Text = log1.username();
             overviewall();
+            Refresh();
         }
 
         public void Refresh()
@@ -40,6 +43,12 @@ namespace UI_Testing_2
             //Payment Data load
             dt_Pay = log1.ConSelect("Payment");
             Pay_data.ItemsSource = dt_Pay.DefaultView;
+
+            dt_room = log1.ConSelect("Room");
+            room_data.ItemsSource = dt_room.DefaultView;
+
+            dt_cust = log1.ConSelect("Client");
+            cust_data.ItemsSource = dt_cust.DefaultView;
         }
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
@@ -153,6 +162,16 @@ namespace UI_Testing_2
         }
 
         private void Rd_Payment_Click(object sender, RoutedEventArgs e)
+        {
+            overviewall();
+        }
+
+        private void Rd_cust_Click(object sender, RoutedEventArgs e)
+        {
+            overviewall();
+        }
+
+        private void Rd_rooms_Click(object sender, RoutedEventArgs e)
         {
             overviewall();
         }

@@ -236,5 +236,10 @@ namespace UI_Testing_2
         {
             DialogHost.IsOpen = false;
         }
+
+        private void Btn_cancel_Click(object sender, RoutedEventArgs e)
+        {
+            log1.ConUpdate("update Reservation Set Status = 'Cancelled without Refund' where Reser_ID = '"+ lbl_RE_ID1.Text +"'");
+        }
     }
 }

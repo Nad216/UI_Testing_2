@@ -170,7 +170,7 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_cancel" Content="Cancel" FontSize="22" Height="40" Grid.Column="1" FontWeight="Bold"/>
+            <Button x:Name="btn_cancel" Content="Cancel" FontSize="22" Height="40" Grid.Column="1" FontWeight="Bold" Click="Btn_cancel_Click"/>
             <Button x:Name="btn_reset" Content="Reset" FontSize="22" Height="40" Grid.Column="3" FontWeight="Bold"/>
             <Button x:Name="btn_exit" Content="Exit" FontSize="22" Height="40" Grid.Column="5" Background="#F22222" Foreground="#ffffff" FontWeight="Bold"/>
         </Grid>

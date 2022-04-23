@@ -46,7 +46,7 @@
             </Grid.RowDefinitions>
             <TextBlock Margin="5,2,5,2" Foreground="#D6D8F3" Grid.Column="1" Grid.Row="1" Text="User" VerticalAlignment="Center" FontWeight="Bold" FontSize="15" />
             <materialDesign:Chip x:Name="user_chip"  Margin="5,2,5,2" Grid.Column="2" Grid.Row="1" Content="name" FontSize="15" Foreground="#354875" Background="#F598D8"/>
-            <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Cancel Reservations" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+            <TextBlock Foreground="#FAD300" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" FontSize="25" Margin="20,0,20,0" Text="Client Registration" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
             <Label Foreground="#FFFFFF" Grid.Column="7" Grid.Row="1" x:Name = "dt_view"  Content="{Binding Source={StaticResource ticker}, Path=Full, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
             <Button x:Name="btn_close" BorderBrush="Transparent" Background="Transparent" Grid.Column="9" Grid.Row="1" Click="Btn_close_Click">
                 <materialDesign:PackIcon Foreground="#ffaf00"  Kind="CloseBox" VerticalAlignment="Center" Width="30" Height="30" />
@@ -69,11 +69,11 @@
                     <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Label FontWeight="Bold" FontSize="18"  Grid.Column="1" Grid.Row="0" x:Name="lbl_name" Content="Name"  />
-                <TextBox Grid.Column="3" Grid.Row="0" x:Name="txt_fname" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="First Name"/>
-                <TextBox Grid.Column="5" Grid.Row="0" x:Name="txt_lname" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="Last Name"/>
+                <TextBox Grid.Column="3" Grid.Row="0" x:Name="txt_fname" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="First Name"/>
+                <TextBox Grid.Column="5" Grid.Row="0" x:Name="txt_lname" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="Last Name"/>
 
                 <Label FontWeight="Bold" FontSize="18"  Grid.Column="1" Grid.Row="2" x:Name="lbl_nic" Content="NIC"/>
-                <TextBox  Grid.Column="3" Grid.Row="2"  x:Name="txt_nic" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="997890399V"/>
+                <TextBox  Grid.Column="3" Grid.Row="2"  x:Name="txt_nic" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="997890399V"/>
 
             </Grid>
         </Grid>
@@ -87,8 +87,8 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
             <Label FontWeight="Bold" FontSize="18" Grid.Row="0" x:Name="lbl_address" Content="Address"/>
-                <TextBox Grid.Row="2" x:Name="txt_saddress" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="Street Address"/>
-                <TextBox Margin="120,0,0,0" Grid.Row="0" x:Name="txt_adressl2" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="Street Address Line1"/>
+            <TextBox Grid.Row="2" x:Name="txt_saddress" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="Street Address"/>
+            <TextBox Margin="120,0,0,0" Grid.Row="0" x:Name="txt_adressl2" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="Street Address Line1"/>
                 <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -97,9 +97,9 @@
                         <ColumnDefinition Width="15" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" x:Name="txt_city" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="city"/>
-                    <TextBox Grid.Column="2" x:Name="txt_province" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="State/Province"/>
-                    <TextBox Grid.Column="4" x:Name="txt_zip" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="Postal/Zip Code"/>
+                <TextBox Grid.Column="0" x:Name="txt_city" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="city"/>
+                <TextBox Grid.Column="2" x:Name="txt_province" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="State/Province"/>
+                <TextBox Grid.Column="4" x:Name="txt_zip" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="Postal/Zip Code"/>
                 </Grid>
             </Grid>
             <Grid Margin="5,0,5,0" Grid.Row="3">
@@ -119,11 +119,11 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
             <Label FontSize="18"  FontWeight="Bold" Grid.Column="0" Grid.Row="0" x:Name="lbl_mnumber" Content="Mobile Number"/>
-                <TextBox Grid.Column="2" Grid.Row="0" x:Name="txt_mnumber" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="+94721325266" />
+            <TextBox Grid.Column="2" Grid.Row="0" x:Name="txt_mnumber" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="+94721325266" />
             <Label FontSize="18"  FontWeight="Bold" Grid.Column="4" Grid.Row="0"  x:Name="lbl_hnumber" Content="Home Phone Number"/>
-                <TextBox Grid.Column="6" Grid.Row="0"  x:Name="txt_hnumber" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="+94112652976"/>
+            <TextBox Grid.Column="6" Grid.Row="0"  x:Name="txt_hnumber" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="+94112652976"/>
             <Label FontSize="18"  FontWeight="Bold" Grid.Column="0" Grid.Row="2"  x:Name="lbl_email" Content="Email"/>
-                <TextBox Grid.Column="2" Grid.Row="2"  x:Name="txt_email" Style="{StaticResource MaterialDesignFilledTextBox}" Tag="example@example.com"/>
+            <TextBox Grid.Column="2" Grid.Row="2"  x:Name="txt_email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Tag="example@example.com"/>
             </Grid>
         <Label Margin="5,0,5,0" FontSize="18"  FontWeight="Bold" Grid.Row="4"  x:Name="lbl_note" Content="Note"/>
             <TextBox Grid.Row="5" Height="70" x:Name="txt_note" Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="10"/>
@@ -138,9 +138,9 @@
                 <ColumnDefinition Width="60" />
                 
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" x:Name="btn_submit" Content="Submit" />
-            <Button Grid.Column="3" x:Name="btn_clear" Content="CLEAR"/>
-            <Button Grid.Column="5" x:Name="btn_exit" Content="EXIT" />            
+            <Button Grid.Column="1" x:Name="btn_submit" Content="Submit" FontWeight="Bold" />
+            <Button Grid.Column="3" x:Name="btn_clear" Content="CLEAR" FontWeight="Bold"/>
+            <Button Grid.Column="5" x:Name="btn_exit" Content="EXIT" FontWeight="Bold" />            
             </Grid>
     </Grid>
 </Window>

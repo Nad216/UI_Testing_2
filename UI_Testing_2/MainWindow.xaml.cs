@@ -42,16 +42,36 @@ namespace UI_Testing_2
 
         public void Error_msg()
         {
-            msg_ok.Background = ccg.cd_fill("#FF0000");
-            msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
-            msg_txt.Foreground = ccg.cd_fill("#FF0000");
-        }
+            try
+            {
+                msg_icon.Kind = PackIconKind.AlertCircle;
+                msg_icon.Foreground = ccg.cd_fill("#FF0000");
+                msg_ok.Background = ccg.cd_fill("#FF0000");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#FF0000");
+
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+}
 
         public void Information_msg()
         {
-            msg_ok.Background = ccg.cd_fill("#197EFF");
-            msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
-            msg_txt.Foreground = ccg.cd_fill("#193CFF");
+            try
+            {
+                msg_icon.Kind = PackIconKind.InformationOutline;
+                msg_icon.Foreground = ccg.cd_fill("#193CFF");
+                msg_ok.Background = ccg.cd_fill("#197EFF");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#193CFF");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void Btn_login_Click(object sender, RoutedEventArgs e)

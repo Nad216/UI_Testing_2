@@ -27,6 +27,42 @@ namespace UI_Testing_2
         DataTable dt_C_in;
         DataTable dt_select;
 
+        public void Error_msg(string msg)
+        {
+            try
+            {
+                msg_txt.Text = msg;
+                msg_icon.Kind = PackIconKind.AlertCircle;
+                msg_icon.Foreground = ccg.cd_fill("#FF0000");
+                msg_ok.Background = ccg.cd_fill("#FF0000");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#FF0000");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void Information_msg(string msg)
+        {
+            try
+            {
+                msg_txt.Text = msg;
+                msg_icon.Kind = PackIconKind.InformationOutline;
+                msg_icon.Foreground = ccg.cd_fill("#193CFF");
+                msg_ok.Background = ccg.cd_fill("#197EFF");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#193CFF");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
         public CancelReserve()
         {
             InitializeComponent();
@@ -194,6 +230,11 @@ namespace UI_Testing_2
             {
                 Fill_Reser_details(cmb_selectReID.SelectedIndex,dt);
             }
+        }
+
+        private void Msg_ok_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.IsOpen = false;
         }
     }
 }

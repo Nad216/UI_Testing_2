@@ -23,7 +23,10 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="4"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="1" Margin="10" Name="msg_txt" Text="My first Dialog" FontSize="16" FontWeight="Bold"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <materialDesign:PackIcon x:Name="msg_icon" Kind="InformationVariant" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>                    
+                        <TextBlock Margin="10" Name="msg_txt" Text="My first Dialog" FontSize="16" FontWeight="Bold"/>
+                    </StackPanel>                        
                     <Button Grid.Row="2" Margin="10" Name="msg_ok" Content="OK" FontWeight="Bold" FontSize="16" Click="Msg_ok_Click"/>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>

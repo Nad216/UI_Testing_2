@@ -13,12 +13,31 @@
         TextOptions.TextRenderingMode="Auto"
         Title="MainWindow" Height="530" Width="800" AllowsTransparency="True" WindowStyle="None" Background="#FFFFFF" WindowStartupLocation="CenterScreen">
 
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-    <Grid Grid.Column="0" Grid.Row="0" Background="#820262">
+        <materialDesign:DialogHost x:Name="DialogHost" >
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <materialDesign:PackIcon x:Name="msg_icon" Kind="InformationVariant" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Margin="10" Name="msg_txt" Text="My first Dialog" FontSize="16" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Button Grid.Row="2" Margin="10" Name="msg_ok" Content="OK" FontWeight="Bold" FontSize="16" Click="Msg_ok_Click"/>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <Grid Grid.Column="0" Grid.Row="0" Background="#820262">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15"/>
             <ColumnDefinition Width="auto"/>

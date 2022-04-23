@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
+using MaterialDesignThemes.Wpf;
 
 namespace UI_Testing_2
 {
@@ -13,8 +14,52 @@ namespace UI_Testing_2
     public partial class Reservation : Window
     {
         DB_connetions log1 = new DB_connetions();
+        Color_codes ccg = new Color_codes();
         DataTable dt_a; 
-        DataTable dt_a1; 
+        DataTable dt_a1;
+
+
+        public void Error_msg(string msg)
+        {
+            try
+            {
+                msg_txt.Text = msg;
+                msg_icon.Kind = PackIconKind.AlertCircle;
+                msg_icon.Foreground = ccg.cd_fill("#FF0000");
+                msg_ok.Background = ccg.cd_fill("#FF0000");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#FF0000");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void Information_msg(string msg)
+        {
+            try
+            {
+                msg_txt.Text = msg;
+                msg_icon.Kind = PackIconKind.InformationOutline;
+                msg_icon.Foreground = ccg.cd_fill("#193CFF");
+                msg_ok.Background = ccg.cd_fill("#197EFF");
+                msg_ok.Foreground = ccg.cd_fill("#FFFFFF");
+                msg_txt.Foreground = ccg.cd_fill("#193CFF");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please Contact System administrator.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void Msg_ok_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.IsOpen = false;
+        }
+
 
         public Reservation()
         {
@@ -161,54 +206,203 @@ namespace UI_Testing_2
             {
                 if (String.IsNullOrEmpty(client_name_txt.Text))
                 {
-                    MessageBox.Show("Client Name cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Client Name cannot be blank.");
                     client_name_txt.Focus();
                 }
                 else if (client_name_txt.Text.Any(char.IsDigit))
                 {
-                    MessageBox.Show("Client name cannot have numbers.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Client name cannot have numbers.");
                     client_name_txt.Focus();
                 }
                 else if (String.IsNullOrEmpty(client_name_txt.Text))
                 {
-                    MessageBox.Show("NIC cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("NIC cannot be blank.");
                     client_nic_txt.Focus();
                 }
                 else if (!Regex.IsMatch(client_mobile_txt.Text, @"^(?:7|0|(?:\+94))[0-9]{9,10}$"))
                 {
-                    MessageBox.Show("Please input a valid Mobile Number", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Please input a valid Mobile Number");
                     client_mobile_txt.Focus();
                 }
                 else if ((client_email_txt.Text != "") & (!Regex.IsMatch(client_email_txt.Text, @"^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")))
                 {
-                    MessageBox.Show("Please input a valid email. Ex:- name20@gmail.com", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Please input a valid email. Ex:- name20@gmail.com");
                     client_email_txt.Focus();
                 }
                 else if (!Regex.IsMatch(client_nic_txt.Text, @"^([0-9]{9}[x|X|v|V]|[0-9]{12})$"))
                 {
-                    MessageBox.Show("Please input a valid nic Number. ", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Please input a valid nic Number. ");
                     client_nic_txt.Focus();
                 }
                 else if (cmb_cout_rooms.SelectedIndex == 0)
                 {
-                    MessageBox.Show("Room Count cannot be empty.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Room Count cannot be empty.");
                 }
                 else if ((cid_picker.Text == "") || (cod_picker.Text == ""))
                 {
-                    MessageBox.Show("Check in date and check out date cannot be empty.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Check in date and check out date cannot be empty.");
                 }
                 else if (Convert.ToDateTime(cid_picker.Text) > Convert.ToDateTime(cod_picker.Text))
                 {
-                    MessageBox.Show("Check in date cannot be higher than checkout date.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Error_msg("Check in date cannot be higher than checkout date.");
                 }
 
             }
-            catch(FormatException)
+            catch(Exception)
             {
-                MessageBox.Show("There is an error.Please contact your sytem adminstrator", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                Error_msg("There is an error. Please contact your sytem adminstrator");
             }
         }
 
+        private double Calculate_room_cost(int room_type, int meal_type)
+        {
+            double value = 0;
+            if (room_type == -1)
+            {
+                Error_msg("Select room type");
+            }
+            else if (meal_type == -1)
+            {
+                Error_msg("Select Meal type");
+            }
+            else if (room_type == 0)
+                {
+                    switch (meal_type)
+                    {
+                        case 0:
+                            value = 10000;
+                            break;
+                        case 1:
+                            value = 11000;
+                            break;
+                        case 2:
+                            value = 13500;
+                            break;
+                        case 3:
+                            value = 17500;
+                            break;
+                        default:
+                            value = 0;
+                            break;
+                    }
+                }
+            else if (room_type == 1)
+                {
+                    switch (meal_type)
+                    {
+                        case 0:
+                            value = 15000;
+                            break;
+                        case 1:
+                            value = 18000;
+                            break;
+                        case 2:
+                            value = 22000;
+                            break;
+                        case 3:
+                            value = 30000;
+                            break;
+                        default:
+                            value = 0;
+                            break;
+                    }
+                }
+            else if (room_type == 2)
+                {
+                    switch (meal_type)
+                    {
+                        case 0:
+                            value = 20000;
+                            break;
+                        case 1:
+                            value = 23000;
+                            break;
+                        case 2:
+                            value = 30500;
+                            break;
+                        case 3:
+                            value = 42500;
+                            break;
+                        default:
+                            value = 0;
+                            break;
+                    }
+                }
+            else if (room_type == 3)
+                {
+                    switch (meal_type)
+                    {
+                        case 0:
+                            value = 25000;
+                            break;
+                        case 1:
+                            value = 29000;
+                            break;
+                        case 2:
+                            value = 39000;
+                            break;
+                        case 3:
+                            value = 55000;
+                            break;
+                        default:
+                            value = 0;
+                            break;
+                    }
+                }
+            else if (room_type == 4)
+                {
+                    switch (meal_type)
+                    {
+                        case 0:
+                            value = 30000;
+                            break;
+                        case 1:
+                            value = 33000;
+                            break;
+                        case 2:
+                            value = 40500;
+                            break;
+                        case 3:
+                            value = 52500;
+                            break;
+                        default:
+                            value = 0;
+                            break;
+                    }                    
+                }
+            else
+            {
+                value = 0;
+            }
+            return value;
+        }
+
+        private int no_of_guest(int room_type)
+        {
+            int value;
+            switch (room_type)
+            {
+                case 0:
+                    value = 1;
+                    break;
+                case 1:
+                    value = 2;
+                    break;
+                case 2:
+                    value = 3;
+                    break;
+                case 3:
+                    value = 4;
+                    break;
+                case 4:
+                    value = 3;
+                    break;
+                default:
+                    value = 0;
+                    break;
+            }
+            return value;
+        }
 
         private void Btn_calculate_Click(object sender, RoutedEventArgs e)
         {
@@ -216,6 +410,40 @@ namespace UI_Testing_2
             DateTime cod = Convert.ToDateTime(cod_picker.Text);
 
             no_of_days_txt.Text = ((cod.Date - cid.Date).Days).ToString();
+            if (cmb_cout_rooms.SelectedIndex == -1 || cmb_cout_rooms.SelectedIndex == 0)
+            {
+                number_of_guests_txt.Text = "0";
+                price_per_night_txt.Text = "0";
+            }
+            else if (cmb_cout_rooms.SelectedIndex == 1)
+            {
+                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex));
+                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex));
+            }
+            else if (cmb_cout_rooms.SelectedIndex == 2)
+            {
+                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex));
+                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex));
+            }
+            else if (cmb_cout_rooms.SelectedIndex == 3)
+            {
+                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex));
+                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex));
+            }
+            else if (cmb_cout_rooms.SelectedIndex == 4)
+            {
+                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room4_type.SelectedIndex, cmb_room4_cos_type.SelectedIndex));
+                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex) + no_of_guest(cmb_room4_type.SelectedIndex));
+            }
+            else if (cmb_cout_rooms.SelectedIndex == 5)
+            {
+                price_per_night_txt.Text = Convert.ToString(Calculate_room_cost(cmb_room1_type.SelectedIndex, cmb_room1_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room2_type.SelectedIndex, cmb_room2_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room3_type.SelectedIndex, cmb_room3_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room4_type.SelectedIndex, cmb_room4_cos_type.SelectedIndex) + Calculate_room_cost(cmb_room5_type.SelectedIndex, cmb_room5_cos_type.SelectedIndex));
+                number_of_guests_txt.Text = Convert.ToString(no_of_guest(cmb_room1_type.SelectedIndex) + no_of_guest(cmb_room2_type.SelectedIndex) + no_of_guest(cmb_room3_type.SelectedIndex) + no_of_guest(cmb_room4_type.SelectedIndex) + no_of_guest(cmb_room5_type.SelectedIndex));
+            }
+            else
+            {
+                number_of_guests_txt.Text = "0";
+            }
             
         }
 
@@ -244,32 +472,7 @@ namespace UI_Testing_2
         private void Btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        //if (cmb_selectCID.SelectedIndex == -1)
-        //{
-        //    cmb_selectRoID.ItemsSource = null;
-        //}
-        //else
-        //{
-        //    //int i;
-        //    DataRow[] cli_row = dt_C_in.Select();
-        //    lbl_CL_ID1.Text = cli_row[0]["Client_ID"].ToString();
-        //    dt_select = log1.ConSelect("Reservation where C_ID = '" + lbl_CL_ID1.Text + "'");
-        //    cmb_selectRoID.ItemsSource = dt_select.DefaultView;
-        //    cmb_selectRoID.DisplayMemberPath = "Start_day";
-        //    if (dt_select.Rows.Count > 0)
-        //    {
-        //        lbl_duplicates.Text = "Check Duplicates";
-        //    }
-        //    else
-        //    {
-        //        lbl_duplicates.Text = "No";
-        //        cmb_selectRoID.SelectedIndex = 0;
-        //        lbl_Date_ID1.Text = dt_select.Rows[0]["Start_day"].ToString().Remove(10);
-        //    }
-
-
+        }            
 
         private void Cmb_cout_rooms_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {

@@ -70,6 +70,8 @@ namespace UI_Testing_2
         private void Btn_Payrec_Click(object sender, RoutedEventArgs e)
         {
             //Savindi's WPF Form ADD to Here
+            Payment obj_pay = new Payment();
+            obj_pay.ShowDialog();
         }
 
         private void Dashboard_Menu_change(bool value,UIElement menu)

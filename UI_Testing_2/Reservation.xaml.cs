@@ -205,7 +205,7 @@ namespace UI_Testing_2
             }
             catch(FormatException)
             {
-                MessageBox.Show("Check in/Out cannot be empty.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("There is an error.Please contact your sytem adminstrator", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

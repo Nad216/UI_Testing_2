@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Data;
 using System.Windows.Controls;
+using System.Text.RegularExpressions;
 
 namespace UI_Testing_2
 {
@@ -156,11 +157,41 @@ namespace UI_Testing_2
 
         private void Btn_book_Click(object sender, RoutedEventArgs e)
         {
-            //cmd = new SqlCommand("Insert into reservation_details values ('" + reservation_id_txt.Text + "', '" + cid_picker + "', '" + cod_picker + "' ,'" + client_name_txt.Text + "', '" + client_nic_txt.Text + "','" + client_address_txt.Text + "','" + client_mobile_txt.Text + "','" + client_email_txt.Text + "','" + special_note_txt.Text + "')", con);
-            //MessageBox.Show("Booking Confirmed", "info", MessageBoxButton.OK, MessageBoxImage.Information);
-            //MessageBox.Show("Booking Failed", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //MessageBox.Show("Database Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //MessageBox.Show("Please Try Again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (String.IsNullOrEmpty(client_name_txt.Text))
+            {
+                MessageBox.Show("Client Name cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                client_name_txt.Focus();
+            }
+            else if (client_name_txt.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("Client name cannot have numbers.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                client_name_txt.Focus();
+            }
+            else if (String.IsNullOrEmpty(client_name_txt.Text))
+            {
+                MessageBox.Show("NIC cannot be blank.", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                client_nic_txt.Focus();
+            }
+            else if (!Regex.IsMatch(client_mobile_txt.Text, @"^(?:7|0|(?:\+94))[0-9]{9,10}$"))
+            {
+                MessageBox.Show("Please input a valid Mobile Number", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                client_mobile_txt.Focus();
+            }
+            else if (client_email_txt.Text != null)
+            {
+                if (!Regex.IsMatch(client_email_txt.Text, @"^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"))
+                {
+                    MessageBox.Show("Please input a valid email. Ex:- name20@gmail.com", "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+                    client_email_txt.Focus();
+                }
+            }
+            else if (cmb_cout_rooms.SelectedIndex == 0)
+            {
+                MessageBox.Show("Room Count cannot be empty." , "Info", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+
+
         }
 
 
@@ -170,6 +201,7 @@ namespace UI_Testing_2
             DateTime cod = Convert.ToDateTime(cod_picker.Text);
 
             no_of_days_txt.Text = ((cod.Date - cid.Date).Days).ToString();
+            
         }
 
         private void clear_room_data()

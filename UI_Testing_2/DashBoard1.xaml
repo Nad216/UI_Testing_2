@@ -120,6 +120,21 @@
                     </Grid>
                 </RadioButton.Content>
             </RadioButton>
+            <RadioButton x:Name="rd_reports" Style="{StaticResource MenuButton}" Click="Rd_reports_Click">
+                <RadioButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="DocumentSign" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Grid.Column="3" Text="Reports" FontSize="20"/>
+                    </Grid>
+                </RadioButton.Content>
+            </RadioButton>
             <Button Width="140" Height="40" Content="Log Out" FontWeight="Bold" FontSize="18" materialDesign:ButtonAssist.CornerRadius="20" Margin="10"/>
         </StackPanel>
         <Grid Grid.Column="1">
@@ -161,7 +176,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
@@ -264,6 +279,22 @@
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
                     <DataGrid Grid.Row="1" x:Name="room_data"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="view_report" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <DocumentViewer x:Name="doc" />
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>

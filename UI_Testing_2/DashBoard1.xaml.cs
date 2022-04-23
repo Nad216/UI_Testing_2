@@ -33,6 +33,7 @@ namespace UI_Testing_2
             user_chip.Text = log1.username();
             overviewall();
             Refresh();
+           
         }
 
         public void Refresh()
@@ -106,6 +107,7 @@ namespace UI_Testing_2
                 Dashboard_Menu_change(false, view_Payment);
                 Dashboard_Menu_change(false, view_customers);
                 Dashboard_Menu_change(false, view_room);
+                Dashboard_Menu_change(false, view_report);
             }
             else if (rd_Reser.IsChecked == true)
             { 
@@ -114,6 +116,7 @@ namespace UI_Testing_2
                 Dashboard_Menu_change(false, view_Payment);
                 Dashboard_Menu_change(false, view_customers);
                 Dashboard_Menu_change(false, view_room);
+                Dashboard_Menu_change(false, view_report);
             }
             else if (rd_Payment.IsChecked == true)
             {
@@ -122,6 +125,7 @@ namespace UI_Testing_2
                 Dashboard_Menu_change(true, view_Payment);
                 Dashboard_Menu_change(false, view_customers);
                 Dashboard_Menu_change(false, view_room);
+                Dashboard_Menu_change(false, view_report);
             }
             else if (rd_cust.IsChecked == true)
             {
@@ -130,6 +134,7 @@ namespace UI_Testing_2
                 Dashboard_Menu_change(false, view_Payment);
                 Dashboard_Menu_change(true, view_customers);
                 Dashboard_Menu_change(false, view_room);
+                Dashboard_Menu_change(false, view_report);
             }
             else if (rd_rooms.IsChecked == true)
             {
@@ -138,6 +143,16 @@ namespace UI_Testing_2
                 Dashboard_Menu_change(false, view_Payment);
                 Dashboard_Menu_change(false, view_customers);
                 Dashboard_Menu_change(true, view_room);
+                Dashboard_Menu_change(false, view_report);
+            }
+            else if (rd_reports.IsChecked == true)
+            {
+                Dashboard_Menu_change(false, view_Overview);
+                Dashboard_Menu_change(false, view_Reservation);
+                Dashboard_Menu_change(false, view_Payment);
+                Dashboard_Menu_change(false, view_customers);
+                Dashboard_Menu_change(false, view_room);
+                Dashboard_Menu_change(true, view_report);
             }
             else
             {
@@ -146,6 +161,7 @@ namespace UI_Testing_2
                 Dashboard_Menu_change(false, view_Payment);
                 Dashboard_Menu_change(false, view_customers);
                 Dashboard_Menu_change(false, view_room);
+                Dashboard_Menu_change(false, view_report);
             }
 
 
@@ -172,6 +188,11 @@ namespace UI_Testing_2
         }
 
         private void Rd_rooms_Click(object sender, RoutedEventArgs e)
+        {
+            overviewall();
+        }
+
+        private void Rd_reports_Click(object sender, RoutedEventArgs e)
         {
             overviewall();
         }
